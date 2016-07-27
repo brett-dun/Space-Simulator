@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8B4E07601D46C5E7009EADF1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B4E075F1D46C5E7009EADF1 /* main.cpp */; };
+		8B4E07691D46C701009EADF1 /* Planets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B4E07671D46C701009EADF1 /* Planets.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +27,8 @@
 		8B4E075C1D46C5E7009EADF1 /* Space-Simulator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Space-Simulator"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4E075F1D46C5E7009EADF1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8B4E07661D46C5F3009EADF1 /* simulation.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = simulation.py; sourceTree = "<group>"; };
+		8B4E07671D46C701009EADF1 /* Planets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Planets.cpp; sourceTree = "<group>"; };
+		8B4E07681D46C701009EADF1 /* Planets.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Planets.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,8 @@
 			children = (
 				8B4E075F1D46C5E7009EADF1 /* main.cpp */,
 				8B4E07661D46C5F3009EADF1 /* simulation.py */,
+				8B4E07671D46C701009EADF1 /* Planets.cpp */,
+				8B4E07681D46C701009EADF1 /* Planets.hpp */,
 			);
 			path = "Space-Simulator";
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B4E07601D46C5E7009EADF1 /* main.cpp in Sources */,
+				8B4E07691D46C701009EADF1 /* Planets.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +245,7 @@
 				8B4E07651D46C5E7009EADF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

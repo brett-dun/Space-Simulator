@@ -7,11 +7,11 @@ from turtle import *
 G = 6.67428e-11
 
 # Assumed scale: 100 pixels = 1AU.
-AU = (149597870.7 * 1000)     # 149.6 million km, in meters.
+AU = (149597870.7 * 10**3)     # 149.6 million km, in meters.
 #SCALE = 250 / AU
 SCALE = 50 / AU
 
-TIMESTOP = 24*60*60 * 5
+TIMESTOP = 24*60*60
 
 class Body(Turtle):
     """Subclass of Turtle representing a gravitationally-acting body.
@@ -24,7 +24,7 @@ class Body(Turtle):
     
     name = 'Body'
     mass = None
-    longitudeOfAscendingNode = 0.0
+    longitudeOfPerihelion = 0.0
     periHelion = 0.0
     velocity = 0.0
     reversed = False
@@ -62,26 +62,26 @@ class Body(Turtle):
         theta = math.atan2(dy, dx)
         fx = math.cos(theta) * f
         fy = math.sin(theta) * f
-    return fx, fy
+        return fx, fy
 
-def update_start(self):
-    self.px = self.periHelion * math.cos(self.longitudeOfAscendingNode)
-        self.py = self.periHelion * math.sin(self.longitudeOfAscendingNode)
-        #print( math.cos(self.longitudeOfAscendingNode)**2 + math.sin(self.longitudeOfAscendingNode)**2)
-        #print(math.degrees( math.cos(self.longitudeOfAscendingNode) ))
-        self.vx = self.velocity * math.sin(self.longitudeOfAscendingNode)
-        self.vy = self.velocity * math.cos(self.longitudeOfAscendingNode)
-        if self.longitudeOfAscendingNode >= 0 and self.longitudeOfAscendingNode <= math.radians(90):
+    def update_start(self):
+        self.px = self.periHelion * math.cos(self.longitudeOfPerihelion)
+        self.py = self.periHelion * math.sin(self.longitudeOfPerihelion)
+        #print( math.cos(self.longitudeOfPerihelion)**2 + math.sin(self.longitudeOfPerihelion)**2)
+        #print(math.degrees( math.cos(self.longitudeOfPerihelion) ))
+        self.vx = self.velocity * math.sin(self.longitudeOfPerihelion)
+        self.vy = self.velocity * math.cos(self.longitudeOfPerihelion)
+        if self.longitudeOfPerihelion >= 0 and self.longitudeOfPerihelion <= math.radians(90):
             self.vx = math.fabs(self.vx)
             self.vy = 0 - math.fabs(self.vy)
-    elif self.longitudeOfAscendingNode >= math.radians(90) and self.longitudeOfAscendingNode <= math.radians(180):
-        self.vx = math.fabs(self.vx)
+        elif self.longitudeOfPerihelion >= math.radians(90) and self.longitudeOfPerihelion <= math.radians(180):
+            self.vx = math.fabs(self.vx)
             self.vy = math.fabs(self.vy)
-        elif self.longitudeOfAscendingNode <= 0 and self.longitudeOfAscendingNode >= math.radians(-90):
+        elif self.longitudeOfPerihelion <= 0 and self.longitudeOfPerihelion >= math.radians(-90):
             self.vx = -math.fabs(self.vx)
             self.vy = 0 - math.fabs(self.vy)
-    elif self.longitudeOfAscendingNode <= math.radians(-90) and self.longitudeOfAscendingNode >= math.radians(-180):
-        self.vx = -math.fabs(self.vx)
+        elif self.longitudeOfPerihelion <= math.radians(-90) and self.longitudeOfPerihelion >= math.radians(-180):
+            self.vx = -math.fabs(self.vx)
             self.vy = math.fabs(self.vy)
         if self.reversed:
             self.vx = -self.vx
@@ -98,7 +98,7 @@ def update_info(step, bodies):
         s = '{:<8}  Pos.={:>6.2f} {:>6.2f} Vel.={:>10.3f} {:>10.3f}'.format(
                                                                             body.name, body.px/AU, body.py/AU, body.vx, body.vy)
         print(s)
-#print()
+    #print()
 
 def loop(bodies):
     """([Body])
@@ -111,10 +111,10 @@ def loop(bodies):
         body.penup()
         body.hideturtle()
     
-    step = 0.0
-    while True:
+    step = 0
+    while step < 5:
         update_info(step, bodies)
-        step += 0.5
+        step += 1
         
         force = {}
         for body in bodies:
@@ -166,7 +166,7 @@ def main():
     mercury.mass = 0.33011 * 10**24
     mercury.periHelion = 0.307491008 * AU
     mercury.velocity = 47.36 * 10**3
-    mercury.longitudeOfAscendingNode = math.radians(48.331)
+    mercury.longitudeOfPerihelion = math.radians(48.331)
     mercury.update_start()
     #mercury.px = mercury.periHelion
     mercury.pencolor('grey')
@@ -179,7 +179,7 @@ def main():
     venus.mass = 4.8685 * 10**24
     venus.periHelion = 0.723 * AU
     venus.velocity = 35.02 * 10**3
-    venus.longitudeOfAscendingNode = math.radians(76.680)
+    venus.longitudeOfPerihelion = math.radians(76.680)
     venus.reversed = True
     venus.update_start()
     venus.pencolor('green')
@@ -191,7 +191,7 @@ def main():
     earth.mass = 5.9742 * 10**4
     earth.periHelion = 1*AU
     earth.velocity = 29.783 * 10**3           # 29.783 km/sec
-    earth.longitudeOfAscendingNode = math.radians(-11.26064)
+    earth.longitudeOfPerihelion = math.radians(-11.26064)
     earth.update_start()
     earth.pencolor('blue')
     
@@ -202,18 +202,18 @@ def main():
     mars.mass = 0.64171 * 10**24
     mars.periHelion = 1.38116939 * AU
     mars.velocity = 24.07 * 10**3
-    mars.longitudeOfAscendingNode = math.radians(49.558)
+    mars.longitudeOfPerihelion = math.radians(49.558)
     mars.update_start()
     mars.pencolor('red')
     
-    # http://nssdc.gsfc.nasa.gov/planetary/factsheet/jupiterfact.html
+    # http://nssdc.gsfc.nasa. gov/planetary/factsheet/jupiterfact.html
     # https://en.wikipedia.org/wiki/Jupiter
     jupiter = Body()
     jupiter.name = 'Jupiter'
     jupiter.mass = 1898.19 * 10**24
     jupiter.periHelion = 4.95007046 * AU
     jupiter.velocity = 13.06 * 10**3
-    jupiter.longitudeOfAscendingNode = math.radians(100.464)
+    jupiter.longitudeOfPerihelion = math.radians(100.464)
     jupiter.update_start()
     jupiter.pencolor('orange')
     
