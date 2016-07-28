@@ -8,32 +8,33 @@
 
 #include "Planets.hpp"
 
-Planet::Planet(std::string n, double m, double longitude, double p, double v, bool r) {
+Planet::Planet(std::string n, long i, double m, double longitude, double p, double v, bool r) {
     name = n;
+    id = i;
     mass = m;
-    longitudeOfPerihelion = M_PI / 180 * longitude;
+    longitudeOfPerihelion = (M_PI / 180) * longitude;
     perihelion = p;
     velocity = v;
     px = perihelion * cos(longitudeOfPerihelion);
     py = perihelion * sin(longitudeOfPerihelion);
-    vx = 0.0;
-    vy = 0.0;
+    vx = velocity * sin(longitudeOfPerihelion);
+    vy = velocity * cos(longitudeOfPerihelion);
+    reversed = r;
     
-    if( longitudeOfPerihelion >= 0 && longitudeOfPerihelion <= (M_PI / 180 * 90) ) {
+    if( longitudeOfPerihelion >= 0 && longitudeOfPerihelion <= (M_PI / 2) ) {
         vx = fabs(vx);
         vy = -fabs(vy);
-    } else if( longitudeOfPerihelion >= (M_PI / 180 * 90) && longitudeOfPerihelion <= (M_PI / 180 * 180) ) {
+    } else if( longitudeOfPerihelion >= (M_PI / 2) && longitudeOfPerihelion <= M_PI ) {
         vx = fabs(vx);
         vy = fabs(vy);
-    } else if( longitudeOfPerihelion <= 0 && longitudeOfPerihelion >= (M_PI / 180 * -90) ){
+    } else if( longitudeOfPerihelion >= M_PI && longitudeOfPerihelion <= (3 * M_PI / 2) ){
         vx = -fabs(vx);
         vy = -fabs(vy);
-    } else if( longitudeOfPerihelion <= (M_PI / 180 * -90) && longitudeOfPerihelion >= (M_PI / 180 * -180) ) {
-        vx = fabs(vx);
+    } else if( (longitudeOfPerihelion >= 3*M_PI/2 && longitudeOfPerihelion <= 2*M_PI) || (longitudeOfPerihelion <= 0 && longitudeOfPerihelion >= -M_PI/2) ) {
+        vx = -fabs(vx);
         vy = fabs(vy);
     }
     
-    reversed = r;
     if(reversed) {
         vx = -vx;
         vy = -vy;
@@ -63,45 +64,58 @@ bool Planet::equals(Planet other) {
     return true;
 }
 
+bool Planet::optomizedEquals(Planet other) {
+    return this->id == other.id;
+}
+
 std::string Planet::toString() {
     std::stringstream ss;
-    ss << "Planet [name=" << name << ", mass=" << mass << ", longitudeOfPerihelion=" << longitudeOfPerihelion << ", perihelion=" << perihelion << ", velocity=" << velocity << ", px=" << px << ", py=" << py << ", vx=" << vx << ", vy=" << vy << ", reversed=" << reversed << "]";
+    ss << "Planet [name=" << name << ", id=" << id << ", mass=" << mass << ", longitudeOfPerihelion=" << longitudeOfPerihelion << ", perihelion=" << perihelion << ", velocity=" << velocity << ", px=" << px << ", py=" << py << ", vx=" << vx << ", vy=" << vy << ", reversed=" << reversed << "]";
     return ss.str();
 }
 
 std::string Planet::toSimpleString() {
     std::stringstream ss;
-    ss << name << "\t[px=" << px << "\tpy=" << py << "\tvx=" << vx << "\tvy" << vy << "]";
+    ss << name << "\t[px=" << px << "\tpy=" << py << "\tvx=" << vx << "\tvy=" << vy << "]";
+    return ss.str();
+}
+std::string Planet::toCSV() {
+    std::stringstream ss;
+    ss << px << "," << py << "," << vx << "," << vy << ",";
     return ss.str();
 }
 
-double Planet::xAttraction(Planet other) {
+double* Planet::attraction(Planet other) {
     double x = other.px - this->px;
     double y = other.py - this->py;
     double d = sqrt(pow(x, 2) + pow(y, 2));
+    double* temp = new double[2];
+    temp[0] = 0;
+    temp[1] = 0;
+    
     if (d == 0) {
-        if (other.mass > this->mass) {
+        /*if (other.mass > this->mass) {
             other.mass += this->mass;
             this->mass = 0;
-            this->px = 0;
-            this->py = 0;
-            this->vx = 0;
-            this->vy = 0;
         } else {
             this->mass += other.mass;
             other.mass = 0;
-            other.px = 0;
-            other.py = 0;
-            other.vx = 0;
-            other.vy = 0;
-        }
-        return 0;
+        }*/
+        return temp;
     }
     
-    return cos(atan2(x, y)) * (G * this->mass * other.mass / pow(d, 2));
+    double angle = atan2(y, x);
+    double f = G * this->mass * other.mass / pow(d, 2);
+    
+    //std::cout << f;
+    
+    temp[0] = cos(angle) * f;
+    temp[1] = sin(angle) * f;
+    
+    return temp;
 }
 
-double Planet::yAttraction(Planet other) {
+/*double Planet::yAttraction(Planet other) {
     double x = other.px - this->px;
     double y = other.py - this->py;
     double d = sqrt(pow(x, 2) + pow(y, 2));
@@ -109,20 +123,12 @@ double Planet::yAttraction(Planet other) {
         if (other.mass > this->mass) {
             other.mass += this->mass;
             this->mass = 0;
-            //this->px = 0;
-            //this->py = 0;
-            //this->vx = 0;
-            //this->vy = 0;
         } else {
             this->mass += other.mass;
             other.mass = 0;
-            //other.px = 0;
-            //other.py = 0;
-            //other.vx = 0;
-            //other.vy = 0;
         }
         return 0;
     }
     
     return sin(atan2(x, y)) * (G * this->mass * other.mass / pow(d, 2));
-}
+}*/

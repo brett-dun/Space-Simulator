@@ -58,6 +58,8 @@ class Body(Turtle):
         # Compute the force of attraction
         f = G * self.mass * other.mass / (d**2)
         
+        print(f)
+        
         # Compute the direction of the force.
         theta = math.atan2(dy, dx)
         fx = math.cos(theta) * f
@@ -73,13 +75,13 @@ class Body(Turtle):
         self.vy = self.velocity * math.cos(self.longitudeOfPerihelion)
         if self.longitudeOfPerihelion >= 0 and self.longitudeOfPerihelion <= math.radians(90):
             self.vx = math.fabs(self.vx)
-            self.vy = 0 - math.fabs(self.vy)
+            self.vy = -math.fabs(self.vy)
         elif self.longitudeOfPerihelion >= math.radians(90) and self.longitudeOfPerihelion <= math.radians(180):
             self.vx = math.fabs(self.vx)
             self.vy = math.fabs(self.vy)
         elif self.longitudeOfPerihelion <= 0 and self.longitudeOfPerihelion >= math.radians(-90):
             self.vx = -math.fabs(self.vx)
-            self.vy = 0 - math.fabs(self.vy)
+            self.vy = -math.fabs(self.vy)
         elif self.longitudeOfPerihelion <= math.radians(-90) and self.longitudeOfPerihelion >= math.radians(-180):
             self.vx = -math.fabs(self.vx)
             self.vy = math.fabs(self.vy)
@@ -112,7 +114,8 @@ def loop(bodies):
         body.hideturtle()
     
     step = 0
-    while step < 5:
+        #while step < 5:
+    while True:
         update_info(step, bodies)
         step += 1
         
@@ -217,10 +220,26 @@ def main():
     jupiter.update_start()
     jupiter.pencolor('orange')
     
+    obj1 = Body()
+    obj1.name = 'obj1'
+    obj1.mass = 10**30
+    obj1.periHelion = AU
+    obj1.update_start()
+    obj1.pencolor('red')
+
+    obj2 = Body()
+    obj2.name = 'obj2'
+    obj2.mass = 10**30
+    obj2.periHelion = AU
+    obj2.longitudeOfPerihelion = math.radians(-180)
+    obj2.update_start()
+    obj2.pencolor('red')
+    
     #update_info(0, [sun, mercury, venus, earth, mars, jupiter])
     
-    loop([sun, mercury, venus, earth, mars, jupiter])
-#loop([sun, mercury, venus, ])
+    #loop([sun, mercury, venus, earth, mars, jupiter])
+    #loop([sun, mercury, venus, ])
+    loop([obj1, obj2])
 
 if __name__ == '__main__':
     main()
