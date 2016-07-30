@@ -105,12 +105,18 @@ double* Planet::attraction(Planet other) {
     }
     
     double angle = atan2(y, x);
+    //std::cout << "angle: " << angle << "\n";
     double f = G * this->mass * other.mass / pow(d, 2);
     
-    //std::cout << f;
+    //std::cout << "m: " << this->mass << "\n";
+    
+    //std::cout << "d: " << d << "\n";
+    //std::cout << "f: " << f << "\n";
     
     temp[0] = cos(angle) * f;
+    //std::cout << temp[0] << "\n";
     temp[1] = sin(angle) * f;
+    //std::cout << temp[1] << "\n";
     
     return temp;
 }

@@ -57,7 +57,10 @@ class Body(Turtle):
         
         # Compute the force of attraction
         f = G * self.mass * other.mass / (d**2)
-        
+
+        print(self.px)
+        print(self.mass)
+        print(d)
         print(f)
         
         # Compute the direction of the force.
@@ -114,8 +117,8 @@ def loop(bodies):
         body.hideturtle()
     
     step = 0
-        #while step < 5:
-    while True:
+    while step < 200:
+        #while True:
         update_info(step, bodies)
         step += 1
         

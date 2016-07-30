@@ -13,10 +13,10 @@
 #include <string>
 #include <math.h>
 #include <sstream>
-//#include <iostream>
+#include <iostream>
 
 const double G = 6.67428e-11;
-const double AU = (1.495978707 * 10e8) * 10e3;
+const double AU = 149597870.7 * pow(10, 3); //(1.495978707 * pow(10, 7)) * 10e3;
 
 class Planet {
 public:

@@ -15,6 +15,12 @@ int main(int argc, const char * argv[]) {
     
     //std::cout << RAND_MAX << "\n";
     
+    //std::cout << G << "\n";
+    //std::cout << AU << "\n";
+    //std::cout << 149597870.7 * pow(10, 3) << "\n";
+    //std::cout << 10e3 << "\n";
+    //std::cout << pow(10, 3) << "\n";
+    
     const unsigned short ARRAY_SIZE = 2;
     const unsigned int TIME = (24 * 60 * 60);
     
@@ -38,6 +44,7 @@ int main(int argc, const char * argv[]) {
     
     Planet one = Planet("one", 0, pow(10, 30), 0, AU, 0, false);
     Planet two = Planet("two", 1, pow(10, 30), 180, AU, 0, false);
+    //two.vx = 0.1;
     
     Planet planets[ARRAY_SIZE];
     /*planets[0] = sun;
@@ -65,7 +72,7 @@ int main(int argc, const char * argv[]) {
     
     //int count = 0;
     //INT_MAX
-    for(unsigned short count = 0; count < 16000; count++) {
+    for(unsigned short count = 0; count < 200; count++) {
         
         //Display info on the planets
         std::cout << "Day " << count << ":\n";
@@ -80,9 +87,10 @@ int main(int argc, const char * argv[]) {
         double force[ARRAY_SIZE][2];
         for(int i = 0; i < ARRAY_SIZE; i++) {
             
-            double fx;
-            double fy;
-            double* forces;
+            //std::cout << i << "\n";
+            
+            double fx = 0;
+            double fy = 0;
             
             //Calculate the gravitation force between the current planet and the other planet
             for(int j = 0; j < ARRAY_SIZE; j++) {
@@ -90,9 +98,7 @@ int main(int argc, const char * argv[]) {
                 //Don't calculate the force with itself
                 if(!planets[i].optomizedEquals(planets[j])) {
                     
-                    
-                    
-                    forces = planets[i].attraction(planets[j]); //get the array of forces
+                    double* forces = planets[i].attraction(planets[j]); //get the array of forces
                     fx += forces[0]; //get the force in the x direction and add it
                     fy += forces[1]; //get the force in the y direction and add it
                     delete forces; //delete the array of forces (we no longer need it)
@@ -110,6 +116,7 @@ int main(int argc, const char * argv[]) {
             
             if(planets[i].mass != 0) {
                 planets[i].vx += force[i][0] / planets[i].mass * TIME;
+                //std::cout << "vx: " << force[i][0] / planets[i].mass * TIME << "\n";
                 planets[i].vy += force[i][1] / planets[i].mass * TIME;
                 
                 planets[i].px += planets[i].vx * TIME;
