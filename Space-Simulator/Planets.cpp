@@ -8,7 +8,7 @@
 
 #include "Planets.hpp"
 
-Planet::Planet(std::string n, long i, double m, double longitude, double p, double v, bool r) {
+Planet::Planet(std::string n, long i, long double m, long double longitude, long double p, long double v, bool r) {
     name = n;
     id = i;
     mass = m;
@@ -21,27 +21,52 @@ Planet::Planet(std::string n, long i, double m, double longitude, double p, doub
     vy = velocity * cos(longitudeOfPerihelion);
     reversed = r;
     
+    if( vx < 0 ) {
+        vx = -vx;
+    }
+    
+    if( vy < 0 ) {
+        vy = -vy;
+    }
+    
     if( longitudeOfPerihelion >= 0 && longitudeOfPerihelion <= (M_PI / 2) ) {
-        vx = fabs(vx);
-        vy = -fabs(vy);
+        //vx = vx;
+        vy = -vy;
     } else if( longitudeOfPerihelion >= (M_PI / 2) && longitudeOfPerihelion <= M_PI ) {
-        vx = fabs(vx);
-        vy = fabs(vy);
+        //vx = vx;
+        //vy = vy;
     } else if( longitudeOfPerihelion >= M_PI && longitudeOfPerihelion <= (3 * M_PI / 2) ){
-        vx = -fabs(vx);
-        vy = -fabs(vy);
+        vx = -vx;
+        vy = -vy;
     } else if( (longitudeOfPerihelion >= 3*M_PI/2 && longitudeOfPerihelion <= 2*M_PI) || (longitudeOfPerihelion <= 0 && longitudeOfPerihelion >= -M_PI/2) ) {
-        vx = -fabs(vx);
-        vy = fabs(vy);
+        vx = -vx;
+        //vy = vy;
     }
     
     if(reversed) {
         vx = -vx;
         vy = -vy;
     }
+    
+    //moons* = new Moon[1];
+}
+
+Planet::Planet(std::string n, long i, long double m, long double pX, long double pY, long double vX, long double vY) {
+    name = n;
+    id = i;
+    mass = m;
+    longitudeOfPerihelion = 0;
+    perihelion = 0;
+    px = pX;
+    py = pY;
+    vx = vX;
+    vy = vY;
+    velocity = sqrt(pow(vx, 2) + pow(vy, 2));
+    reversed = false;
+    //moons* = new Moon[1];
 }
     
-bool Planet::equals(Planet other) {
+/*bool Planet::equals(Planet other) {
     if(this->mass != other.mass) {
         return false;
     } else if(this->longitudeOfPerihelion != other.longitudeOfPerihelion) {
@@ -70,26 +95,26 @@ bool Planet::optomizedEquals(Planet other) {
 
 std::string Planet::toString() {
     std::stringstream ss;
-    ss << "Planet [name=" << name << ", id=" << id << ", mass=" << mass << ", longitudeOfPerihelion=" << longitudeOfPerihelion << ", perihelion=" << perihelion << ", velocity=" << velocity << ", px=" << px << ", py=" << py << ", vx=" << vx << ", vy=" << vy << ", reversed=" << reversed << "]";
+    ss << std::setprecision(8) << "Planet [name=" << name << ", id=" << id << ", mass=" << mass << ", longitudeOfPerihelion=" << longitudeOfPerihelion << ", perihelion=" << perihelion << ", velocity=" << velocity << ", px=" << px << ", py=" << py << ", vx=" << vx << ", vy=" << vy << ", reversed=" << reversed << "]";
     return ss.str();
 }
 
 std::string Planet::toSimpleString() {
     std::stringstream ss;
-    ss << name << "\t[px=" << px << "\tpy=" << py << "\tvx=" << vx << "\tvy=" << vy << "]";
+    ss << std::setprecision(8) << name << "\t[px=" << px << "\tpy=" << py << "\tvx=" << vx << "\tvy=" << vy << "]";
     return ss.str();
 }
 std::string Planet::toCSV() {
     std::stringstream ss;
-    ss << px << "," << py << "," << vx << "," << vy << ",";
+    ss << std::setprecision(8) << px << "," << py << "," << vx << "," << vy << ",";
     return ss.str();
 }
 
-double* Planet::attraction(Planet other) {
-    double x = other.px - this->px;
-    double y = other.py - this->py;
-    double d = sqrt(pow(x, 2) + pow(y, 2));
-    double* temp = new double[2];
+long double* Planet::attraction(Planet other) {
+    long double x = other.px - this->px;
+    long double y = other.py - this->py;
+    long double d = sqrt(pow(x, 2) + pow(y, 2));
+    long double* temp = new long double[2];
     temp[0] = 0;
     temp[1] = 0;
     
@@ -101,12 +126,12 @@ double* Planet::attraction(Planet other) {
             this->mass += other.mass;
             other.mass = 0;
         }*/
-        return temp;
+        /*return temp;
     }
     
-    double angle = atan2(y, x);
+    long double angle = atan2(y, x);
     //std::cout << "angle: " << angle << "\n";
-    double f = G * this->mass * other.mass / pow(d, 2);
+    long double f = G * this->mass * other.mass / pow(d, 2);
     
     //std::cout << "m: " << this->mass << "\n";
     
@@ -121,10 +146,63 @@ double* Planet::attraction(Planet other) {
     return temp;
 }
 
-/*double Planet::yAttraction(Planet other) {
-    double x = other.px - this->px;
-    double y = other.py - this->py;
-    double d = sqrt(pow(x, 2) + pow(y, 2));
+
+void Planet::setVX(long double var) {
+    vx = var;
+}
+void Planet::setVY(long double var) {
+    vy = var;
+}
+void Planet::setPX(long double var) {
+    px = var;
+}
+void Planet::setPY(long double var) {
+    py = var;
+}*/
+
+void Planet::addMoon(unsigned short pos, Moon m) {
+    
+}
+
+
+/*std::string Planet::getName() {
+    return name;
+}
+long Planet::getID() {
+    return id;
+}
+long double Planet::getMass() {
+    return mass;
+}
+long double Planet::getLongitudeOfPerihelion() {
+    return longitudeOfPerihelion;
+}
+long double Planet::getPerihelion() {
+    return perihelion;
+}
+long double Planet::getVelocity() {
+    return velocity;
+}
+long double Planet::getVX() {
+    return vx;
+}
+long double Planet::getVY() {
+    return vy;
+}
+long double Planet::getPX() {
+    return px;
+}
+long double Planet::getPY() {
+    return py;
+}
+bool Planet::getReversed() {
+    return reversed;
+}*/
+
+/*long double Planet::yAttraction(Planet other) {
+    long double x = other.px - this->px;
+    long double y = other.py - this->py;
+    long double d = sqrt(pow(x, 2) + pow(y, 2));
     if (d == 0) {
         if (other.mass > this->mass) {
             other.mass += this->mass;

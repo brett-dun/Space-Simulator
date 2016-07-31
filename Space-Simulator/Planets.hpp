@@ -14,42 +14,67 @@
 #include <math.h>
 #include <sstream>
 #include <iostream>
+#include <iomanip>
 
-const double G = 6.67428e-11;
-const double AU = 149597870.7 * pow(10, 3); //(1.495978707 * pow(10, 7)) * 10e3;
+#include "SpaceObjects.hpp"
+#include "Moons.hpp"
 
-class Planet {
+class Planet : public SpaceObject {
 public:
     
     //Planet(name, mass, longitudeOfPerihelion, periHelion, velocity, reversed)
-    Planet(std::string n, long i, double m, double longitude, double p, double v, bool r);
+    Planet(std::string n, long i, long double m, long double longitude, long double p, long double v, bool r);
+    Planet(std::string n, long i, long double m, long double pX, long double pY, long double vX, long double vY);
     Planet() : Planet("Planet", rand(), 0, 0, 0, 0, false) {}
     
-    bool equals(Planet other);
+    /*bool equals(Planet other);
     bool optomizedEquals(Planet other);
     
     std::string toString();
     std::string toSimpleString();
     std::string toCSV();
     
-    double* attraction(Planet other);
-    //double yAttraction(Planet other);
+    long double* attraction(Planet other);
+    //long double yAttraction(Planet other);
     
-    std::string name;
+    void setVX(long double var);
+    void setVY(long double var);
+    void setPX(long double var);
+    void setPY(long double var);*/
+    void addMoon(unsigned short pos, Moon m);
+    
+    /*std::string getName();
+    long getID();
+    long double getMass();
+    long double getLongitudeOfPerihelion();
+    long double getPerihelion();
+    long double getVelocity();
+    long double getVX();
+    long double getVY();
+    long double getPX();
+    long double getPY();
+    bool getReversed();*/
+    
+private:
+    //Original Stuff
+    /*std::string name;
     long id;
-    double mass; //kilograms (kg)
-    double longitudeOfPerihelion; //meters (m)
-    double perihelion; //meters (m)
-    double velocity; //meters per second (m/s)
-    double vx; //velocity in the x direction (m/s)
-    double vy; //velocity in the y direction (m/s)
-    double px; //position in the x direction (m/s)
-    double py; //position in the y direction (m/s)
+    long double mass; //kilograms (kg)
+    long double longitudeOfPerihelion; //meters (m)
+    long double perihelion; //meters (m)
+    long double velocity; //meters per second (m/s)
+    long double vx; //velocity in the x direction (m/s)
+    long double vy; //velocity in the y direction (m/s)
+    long double px; //position in the x direction (m)
+    long double py; //position in the y direction (m)
     bool reversed;
+    //New Stuff*/
+    Moon* moons;
     
 };
 
 const Planet SUN =      Planet("Sun",       0,  1.98892 * pow(10, 30),  0, 0, 0, false);
+
 const Planet MERCURY =  Planet("Mercury",   1,  0.33011 * pow(10, 24),  77.45645,   46.00 * pow(10, 6) * pow(10, 3),    58.98 * pow(10, 3), false);
 const Planet VENUS =    Planet("Venus",     2,  4.8675 * pow(10, 24),   131.53298,  107.48 * pow(10, 6) * pow(10, 3),   35.26 * pow(10, 3), true);
 const Planet EARTH =    Planet("Earth",     3,  5.9723 * pow(10, 24),   102.94719,  147.09 * pow(10, 6) * pow(10, 3),   30.29 * pow(10, 3), false);

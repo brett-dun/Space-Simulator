@@ -117,7 +117,7 @@ def loop(bodies):
         body.hideturtle()
     
     step = 0
-    while step < 200:
+    while True:
         #while True:
         update_info(step, bodies)
         step += 1
@@ -223,7 +223,7 @@ def main():
     jupiter.update_start()
     jupiter.pencolor('orange')
     
-    obj1 = Body()
+    """obj1 = Body()
     obj1.name = 'obj1'
     obj1.mass = 10**30
     obj1.periHelion = AU
@@ -236,13 +236,13 @@ def main():
     obj2.periHelion = AU
     obj2.longitudeOfPerihelion = math.radians(-180)
     obj2.update_start()
-    obj2.pencolor('red')
+    obj2.pencolor('red')"""
     
     #update_info(0, [sun, mercury, venus, earth, mars, jupiter])
     
-    #loop([sun, mercury, venus, earth, mars, jupiter])
+    loop([sun, mercury, venus, earth, mars, jupiter])
     #loop([sun, mercury, venus, ])
-    loop([obj1, obj2])
+    #loop([obj1, obj2])
 
 if __name__ == '__main__':
     main()

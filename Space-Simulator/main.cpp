@@ -7,21 +7,15 @@
 //
 
 #include <iostream>
+
 #include "Planets.hpp"
+#include "SpaceObjects.hpp"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
     //std::cout << "Hello, World!\n";
     
-    //std::cout << RAND_MAX << "\n";
-    
-    //std::cout << G << "\n";
-    //std::cout << AU << "\n";
-    //std::cout << 149597870.7 * pow(10, 3) << "\n";
-    //std::cout << 10e3 << "\n";
-    //std::cout << pow(10, 3) << "\n";
-    
-    const unsigned short ARRAY_SIZE = 2;
+    const unsigned short ARRAY_SIZE = 10;
     const unsigned int TIME = (24 * 60 * 60);
     
     //Sun
@@ -42,12 +36,11 @@ int main(int argc, const char * argv[]) {
     //Exoplanets (and dwarf planets)
     Planet pluto = PLUTO;
     
-    Planet one = Planet("one", 0, pow(10, 30), 0, AU, 0, false);
-    Planet two = Planet("two", 1, pow(10, 30), 180, AU, 0, false);
-    //two.vx = 0.1;
+    //Planet one = Planet("one", 0, pow(10, 30), 0, AU, 0, false);
+    //Planet two = Planet("two", 1, pow(10, 30), 180, AU, 0, false);
     
     Planet planets[ARRAY_SIZE];
-    /*planets[0] = sun;
+    planets[0] = sun;
     planets[1] = mercury;
     planets[2] = venus;
     planets[3] = earth;
@@ -57,40 +50,39 @@ int main(int argc, const char * argv[]) {
     planets[7] = uranus;
     planets[8] = neptune;
     planets[9] = pluto;
-    //planets[9].mass = 1;*/
-    planets[0] = one;
-    planets[1] = two;
+    //planets[0] = one;
+    //planets[1] = two;
     
     
     
-    /*std::string s;
+    std::string s;
     for(int i = 0; i < ARRAY_SIZE; i++) {
-        std::string temp = planets[i].name;
+        std::string temp = planets[i].getName();
         s += (temp + " px," + temp + " py," + temp + " vx," + temp + " vy,");
     }
-    std::cout << s << "\n";*/
+    std::cout << s << "\n";
     
     //int count = 0;
     //INT_MAX
-    for(unsigned short count = 0; count < 200; count++) {
+    for(unsigned short count = 0; count < 365; count++) {
         
         //Display info on the planets
-        std::cout << "Day " << count << ":\n";
+        //std::cout << "Day " << count << ":\n";
         for(int i = 0; i < ARRAY_SIZE; i++) {
             //std::cout << planets[i].toString() << "\n";
-            std::cout << planets[i].toSimpleString() << "\n";
-            //std::cout << planets[i].toCSV();
+            //std::cout << planets[i].toSimpleString() << "\n";
+            std::cout << planets[i].toCSV();
         }
-        //std::cout << "\n";
+        std::cout << "\n";
         
         //Calculate forces on each planet
-        double force[ARRAY_SIZE][2];
+        long double force[ARRAY_SIZE][2];
         for(int i = 0; i < ARRAY_SIZE; i++) {
             
             //std::cout << i << "\n";
             
-            double fx = 0;
-            double fy = 0;
+            long double fx = 0;
+            long double fy = 0;
             
             //Calculate the gravitation force between the current planet and the other planet
             for(int j = 0; j < ARRAY_SIZE; j++) {
@@ -98,7 +90,7 @@ int main(int argc, const char * argv[]) {
                 //Don't calculate the force with itself
                 if(!planets[i].optomizedEquals(planets[j])) {
                     
-                    double* forces = planets[i].attraction(planets[j]); //get the array of forces
+                    long double* forces = planets[i].attraction(planets[j]); //get the array of forces
                     fx += forces[0]; //get the force in the x direction and add it
                     fy += forces[1]; //get the force in the y direction and add it
                     delete forces; //delete the array of forces (we no longer need it)
@@ -114,13 +106,13 @@ int main(int argc, const char * argv[]) {
         //Move the planets
         for(int i = 0; i < ARRAY_SIZE; i++) {
             
-            if(planets[i].mass != 0) {
-                planets[i].vx += force[i][0] / planets[i].mass * TIME;
+            if(planets[i].getMass() != 0) {
+                planets[i].setVX( planets[i].getVX() + (force[i][0] / planets[i].getMass() * TIME) );
                 //std::cout << "vx: " << force[i][0] / planets[i].mass * TIME << "\n";
-                planets[i].vy += force[i][1] / planets[i].mass * TIME;
+                planets[i].setVY( planets[i].getVY() + (force[i][1] / planets[i].getMass() * TIME) );
                 
-                planets[i].px += planets[i].vx * TIME;
-                planets[i].py += planets[i].vy * TIME;
+                planets[i].setPX( planets[i].getPX() + (planets[i].getVX() * TIME) );
+                planets[i].setPY( planets[i].getPY() + (planets[i].getVY() * TIME) );
             }
             
         }

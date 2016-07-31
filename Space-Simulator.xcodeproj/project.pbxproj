@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		8B4E07601D46C5E7009EADF1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B4E075F1D46C5E7009EADF1 /* main.cpp */; };
 		8B4E07691D46C701009EADF1 /* Planets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B4E07671D46C701009EADF1 /* Planets.cpp */; };
+		8B60C9E91D4DAFA5002888DF /* Stars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B60C9E71D4DAFA5002888DF /* Stars.cpp */; };
+		8B60C9EC1D4DB224002888DF /* SpaceObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B60C9EA1D4DB224002888DF /* SpaceObjects.cpp */; };
+		8BEC20601D4CEB5000BA001E /* Moons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC205E1D4CEB5000BA001E /* Moons.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +32,12 @@
 		8B4E07661D46C5F3009EADF1 /* simulation.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = simulation.py; sourceTree = "<group>"; };
 		8B4E07671D46C701009EADF1 /* Planets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Planets.cpp; sourceTree = "<group>"; };
 		8B4E07681D46C701009EADF1 /* Planets.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Planets.hpp; sourceTree = "<group>"; };
+		8B60C9E71D4DAFA5002888DF /* Stars.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stars.cpp; sourceTree = "<group>"; };
+		8B60C9E81D4DAFA5002888DF /* Stars.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Stars.hpp; sourceTree = "<group>"; };
+		8B60C9EA1D4DB224002888DF /* SpaceObjects.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpaceObjects.cpp; sourceTree = "<group>"; };
+		8B60C9EB1D4DB224002888DF /* SpaceObjects.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SpaceObjects.hpp; sourceTree = "<group>"; };
+		8BEC205E1D4CEB5000BA001E /* Moons.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Moons.cpp; sourceTree = "<group>"; };
+		8BEC205F1D4CEB5000BA001E /* Moons.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Moons.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +74,12 @@
 				8B4E07661D46C5F3009EADF1 /* simulation.py */,
 				8B4E07671D46C701009EADF1 /* Planets.cpp */,
 				8B4E07681D46C701009EADF1 /* Planets.hpp */,
+				8BEC205E1D4CEB5000BA001E /* Moons.cpp */,
+				8BEC205F1D4CEB5000BA001E /* Moons.hpp */,
+				8B60C9E71D4DAFA5002888DF /* Stars.cpp */,
+				8B60C9E81D4DAFA5002888DF /* Stars.hpp */,
+				8B60C9EA1D4DB224002888DF /* SpaceObjects.cpp */,
+				8B60C9EB1D4DB224002888DF /* SpaceObjects.hpp */,
 			);
 			path = "Space-Simulator";
 			sourceTree = "<group>";
@@ -125,8 +140,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BEC20601D4CEB5000BA001E /* Moons.cpp in Sources */,
+				8B60C9EC1D4DB224002888DF /* SpaceObjects.cpp in Sources */,
 				8B4E07601D46C5E7009EADF1 /* main.cpp in Sources */,
 				8B4E07691D46C701009EADF1 /* Planets.cpp in Sources */,
+				8B60C9E91D4DAFA5002888DF /* Stars.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
