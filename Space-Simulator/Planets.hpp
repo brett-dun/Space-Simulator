@@ -16,16 +16,16 @@
 #include <iostream>
 #include <iomanip>
 
-#include "SpaceObjects.hpp"
+#include "StarSystemObjects.hpp"
 #include "Moons.hpp"
 
-class Planet : public SpaceObject {
+class Planet : public StarSystemObject {
 public:
     
-    //Planet(name, mass, longitudeOfPerihelion, periHelion, velocity, reversed)
-    Planet(std::string n, long i, long double m, long double longitude, long double p, long double v, bool r);
+    //Planet(name, mass, longitudeOfPerihelion, perihelion, velocity, reversed, numMoons)
+    Planet(std::string name_, long id_, long double mass_, long double longitude_, long double perihelion_, long double velocity_, bool reversed_, unsigned short numMoons_);
     Planet(std::string n, long i, long double m, long double pX, long double pY, long double vX, long double vY);
-    Planet() : Planet("Planet", rand(), 0, 0, 0, 0, false) {}
+    Planet() : Planet("Planet", rand(), 0, 0, 0, 0, false, 0) {}
     
     /*bool equals(Planet other);
     bool optomizedEquals(Planet other);
@@ -69,6 +69,7 @@ private:
     long double py; //position in the y direction (m)
     bool reversed;
     //New Stuff*/
+    unsigned short numMoons;
     Moon* moons;
     
 };

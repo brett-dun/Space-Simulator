@@ -15,9 +15,22 @@
 
 class Moon : protected SpaceObject {
 public:
-    Moon();
+    Moon(std::string name_, long id_, long double mass_, long double longitude_, long double pericenter_, long double velocity_, bool retrograde_);
+    Moon() : Moon("Moon", rand(), 0, 0, 0, 0, false) {}
+    
+    std::string toString();
+    
+    bool equals(Moon other);
+    
+    long double getLongitudeOfPericenter();
+    long double getPericenter();
+    bool isRetrograde();
+    
 private:
-    int var;
+    long double longitudeOfPericenter; //meters (m)
+    long double pericenter; //meters (m)
+    
+    bool retrograde;
 };
 
 const Moon Ganymede =   Moon();

@@ -8,18 +8,18 @@
 
 #include "Planets.hpp"
 
-Planet::Planet(std::string n, long i, long double m, long double longitude, long double p, long double v, bool r) {
-    name = n;
-    id = i;
-    mass = m;
-    longitudeOfPerihelion = (M_PI / 180) * longitude;
-    perihelion = p;
-    velocity = v;
+Planet::Planet(std::string name_, long id_, long double mass_, long double longitude_, long double perihelion_, long double velocity_, bool reversed_, unsigned short numMoons_) {
+    name = name_;
+    id = id_;
+    mass = mass_;
+    longitudeOfPerihelion = (M_PI / 180) * longitude_;
+    perihelion = perihelion_;
+    velocity = velocity_;
     px = perihelion * cos(longitudeOfPerihelion);
     py = perihelion * sin(longitudeOfPerihelion);
     vx = velocity * sin(longitudeOfPerihelion);
     vy = velocity * cos(longitudeOfPerihelion);
-    reversed = r;
+    reversed = reversed_;
     
     if( vx < 0 ) {
         vx = -vx;
@@ -48,7 +48,9 @@ Planet::Planet(std::string n, long i, long double m, long double longitude, long
         vy = -vy;
     }
     
-    //moons* = new Moon[1];
+    numMoons = numMoons_;
+    
+    moons = new Moon[numMoons];
 }
 
 Planet::Planet(std::string n, long i, long double m, long double pX, long double pY, long double vX, long double vY) {
@@ -63,7 +65,7 @@ Planet::Planet(std::string n, long i, long double m, long double pX, long double
     vy = vY;
     velocity = sqrt(pow(vx, 2) + pow(vy, 2));
     reversed = false;
-    //moons* = new Moon[1];
+    moons = NULL;
 }
     
 /*bool Planet::equals(Planet other) {
@@ -161,7 +163,7 @@ void Planet::setPY(long double var) {
 }*/
 
 void Planet::addMoon(unsigned short pos, Moon m) {
-    
+    moons[pos] = m;
 }
 
 

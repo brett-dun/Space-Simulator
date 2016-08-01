@@ -15,7 +15,10 @@
 
 class Star : protected SpaceObject {
 public:
-    Star();
+    Star(std::string name_, long id_, long double mass_, long double velocity_);
+    Star() : Star("Star", rand(), 0, 0) {}
 };
+
+const Star SUN =  Star("Sun",   0,  1.98892 * pow(10, 30),  0);
 
 #endif /* Stars_hpp */

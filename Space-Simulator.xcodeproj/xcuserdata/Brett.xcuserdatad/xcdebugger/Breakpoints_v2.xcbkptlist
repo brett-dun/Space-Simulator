@@ -9,46 +9,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Space-Simulator/Planets.cpp"
-            timestampString = "491633807.063177"
+            filePath = "Space-Simulator/SpaceObjects.cpp"
+            timestampString = "491716524.44563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "Planet::Planet(std::string n, long i, long double m, long double pX, long double pY, long double vX, long double vY)"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "SpaceObject::equals(SpaceObject other)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Planet::Planet(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, long, long double, long double, long double, long double, long double)"
-                  moduleName = "Space-Simulator"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Brett/Documents/Apps/Space-Simulator/Space-Simulator/Planets.cpp"
-                  timestampString = "491633890.153562"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67"
-                  offsetFromSymbolStart = "292">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Planet::Planet(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, long, long double, long double, long double, long double, long double)"
-                  moduleName = "Space-Simulator"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Brett/Documents/Apps/Space-Simulator/Space-Simulator/Planets.cpp"
-                  timestampString = "491633890.153871"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67"
-                  offsetFromSymbolStart = "101">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -8,16 +8,19 @@
 
 #include "SpaceObjects.hpp"
 
-SpaceObject::SpaceObject() {
-    
+SpaceObject::SpaceObject(std::string name_, long id_, long double mass_, long double vx_, long double vy_, long double px_, long double py_) {
+    name = name_;
+    id = id_;
+    mass = mass_;
+    vx = vx_;
+    vy = vy_;
+    px = px_;
+    py = py_;
+    velocity = sqrt(pow(vx, 2) + pow(vy, 2));
 }
 
 bool SpaceObject::equals(SpaceObject other) {
     if(this->mass != other.mass) {
-        return false;
-    } else if(this->longitudeOfPerihelion != other.longitudeOfPerihelion) {
-        return false;
-    } else if(this->perihelion != other.perihelion) {
         return false;
     } else if(this->velocity != other.velocity) {
         return false;
@@ -29,8 +32,6 @@ bool SpaceObject::equals(SpaceObject other) {
         return false;
     } else if(this->vy != other.vy) {
         return false;
-    } else if(this->reversed != other.reversed) {
-        return false;
     }
     return true;
 }
@@ -41,7 +42,7 @@ bool SpaceObject::optomizedEquals(SpaceObject other) {
 
 std::string SpaceObject::toString() {
     std::stringstream ss;
-    ss << std::setprecision(8) << "SpaceObject [name=" << name << ", id=" << id << ", mass=" << mass << ", longitudeOfPerihelion=" << longitudeOfPerihelion << ", perihelion=" << perihelion << ", velocity=" << velocity << ", px=" << px << ", py=" << py << ", vx=" << vx << ", vy=" << vy << ", reversed=" << reversed << "]";
+    ss << std::setprecision(8) << "SpaceObject [name=" << name << ", id=" << id << ", mass=" << mass << ", velocity=" << velocity << ", px=" << px << ", py=" << py << ", vx=" << vx << ", vy=" << vy << "]";
     return ss.str();
 }
 
@@ -116,12 +117,7 @@ long SpaceObject::getID() {
 long double SpaceObject::getMass() {
     return mass;
 }
-long double SpaceObject::getLongitudeOfPerihelion() {
-    return longitudeOfPerihelion;
-}
-long double SpaceObject::getPerihelion() {
-    return perihelion;
-}
+
 long double SpaceObject::getVelocity() {
     return velocity;
 }
@@ -136,7 +132,4 @@ long double SpaceObject::getPX() {
 }
 long double SpaceObject::getPY() {
     return py;
-}
-bool SpaceObject::getReversed() {
-    return reversed;
 }

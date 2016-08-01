@@ -39,17 +39,17 @@ int main(int argc, const char * argv[]) {
     //Planet one = Planet("one", 0, pow(10, 30), 0, AU, 0, false);
     //Planet two = Planet("two", 1, pow(10, 30), 180, AU, 0, false);
     
-    Planet planets[ARRAY_SIZE];
-    planets[0] = sun;
-    planets[1] = mercury;
-    planets[2] = venus;
-    planets[3] = earth;
-    planets[4] = mars;
-    planets[5] = jupiter;
-    planets[6] = saturn;
-    planets[7] = uranus;
-    planets[8] = neptune;
-    planets[9] = pluto;
+    SpaceObject solarSystem[ARRAY_SIZE];
+    solarSystem[0] = sun;
+    solarSystem[1] = mercury;
+    solarSystem[2] = venus;
+    solarSystem[3] = earth;
+    solarSystem[4] = mars;
+    solarSystem[5] = jupiter;
+    solarSystem[6] = saturn;
+    solarSystem[7] = uranus;
+    solarSystem[8] = neptune;
+    solarSystem[9] = pluto;
     //planets[0] = one;
     //planets[1] = two;
     
@@ -57,7 +57,7 @@ int main(int argc, const char * argv[]) {
     
     std::string s;
     for(int i = 0; i < ARRAY_SIZE; i++) {
-        std::string temp = planets[i].getName();
+        std::string temp = solarSystem[i].getName();
         s += (temp + " px," + temp + " py," + temp + " vx," + temp + " vy,");
     }
     std::cout << s << "\n";
@@ -69,9 +69,9 @@ int main(int argc, const char * argv[]) {
         //Display info on the planets
         //std::cout << "Day " << count << ":\n";
         for(int i = 0; i < ARRAY_SIZE; i++) {
-            //std::cout << planets[i].toString() << "\n";
-            //std::cout << planets[i].toSimpleString() << "\n";
-            std::cout << planets[i].toCSV();
+            //std::cout << solarSystem[i].toString() << "\n";
+            //std::cout << solarSystem[i].toSimpleString() << "\n";
+            std::cout << solarSystem[i].toCSV();
         }
         std::cout << "\n";
         
@@ -88,9 +88,9 @@ int main(int argc, const char * argv[]) {
             for(int j = 0; j < ARRAY_SIZE; j++) {
                 
                 //Don't calculate the force with itself
-                if(!planets[i].optomizedEquals(planets[j])) {
+                if(!solarSystem[i].optomizedEquals(solarSystem[j])) {
                     
-                    long double* forces = planets[i].attraction(planets[j]); //get the array of forces
+                    long double* forces = solarSystem[i].attraction(solarSystem[j]); //get the array of forces
                     fx += forces[0]; //get the force in the x direction and add it
                     fy += forces[1]; //get the force in the y direction and add it
                     delete forces; //delete the array of forces (we no longer need it)
@@ -106,13 +106,13 @@ int main(int argc, const char * argv[]) {
         //Move the planets
         for(int i = 0; i < ARRAY_SIZE; i++) {
             
-            if(planets[i].getMass() != 0) {
-                planets[i].setVX( planets[i].getVX() + (force[i][0] / planets[i].getMass() * TIME) );
-                //std::cout << "vx: " << force[i][0] / planets[i].mass * TIME << "\n";
-                planets[i].setVY( planets[i].getVY() + (force[i][1] / planets[i].getMass() * TIME) );
+            if(solarSystem[i].getMass() != 0) {
+                solarSystem[i].setVX( solarSystem[i].getVX() + (force[i][0] / solarSystem[i].getMass() * TIME) );
+                //std::cout << "vx: " << force[i][0] / solarSystem[i].mass * TIME << "\n";
+                solarSystem[i].setVY( solarSystem[i].getVY() + (force[i][1] / solarSystem[i].getMass() * TIME) );
                 
-                planets[i].setPX( planets[i].getPX() + (planets[i].getVX() * TIME) );
-                planets[i].setPY( planets[i].getPY() + (planets[i].getVY() * TIME) );
+                solarSystem[i].setPX( solarSystem[i].getPX() + (solarSystem[i].getVX() * TIME) );
+                solarSystem[i].setPY( solarSystem[i].getPY() + (solarSystem[i].getVY() * TIME) );
             }
             
         }
