@@ -8,7 +8,7 @@
 
 #include "Planets.hpp"
 
-Planet::Planet(std::string name_, long id_, long double mass_, long double longitude_, long double perihelion_, long double velocity_, bool reversed_, unsigned short numMoons_) {
+Planet::Planet(std::string name_, int id_, long double mass_, long double longitude_, long double perihelion_, long double velocity_, bool reversed_, unsigned short numMoons_) {
     name = name_;
     id = id_;
     mass = mass_;
@@ -53,7 +53,7 @@ Planet::Planet(std::string name_, long id_, long double mass_, long double longi
     moons = new Moon[numMoons];
 }
 
-Planet::Planet(std::string n, long i, long double m, long double pX, long double pY, long double vX, long double vY) {
+Planet::Planet(std::string n, int i, long double m, long double pX, long double pY, long double vX, long double vY) {
     name = n;
     id = i;
     mass = m;

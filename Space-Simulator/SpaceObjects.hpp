@@ -21,7 +21,7 @@ const long double AU = 149597870.7e3; //(1.495978707 * pow(10, 7)) * 10e3;
 
 class SpaceObject {
 public:
-    SpaceObject(std::string name_, long id_, long double mass_, long double vx_, long double vy_, long double px_, long double py_);
+    SpaceObject(std::string name_, int id_, long double mass_, long double vx_, long double vy_, long double px_, long double py_);
     SpaceObject() : SpaceObject("Space Object", rand(), 0, 0, 0, 0, 0) {}
     
     bool equals(SpaceObject other);
@@ -52,7 +52,7 @@ protected:
     
     std::string name;
     
-    long id;
+    int id;
     
     long double mass; //kilograms (kg)
     long double velocity; //meters per second (m/s)

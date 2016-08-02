@@ -23,8 +23,8 @@ class Planet : public StarSystemObject {
 public:
     
     //Planet(name, mass, longitudeOfPerihelion, perihelion, velocity, reversed, numMoons)
-    Planet(std::string name_, long id_, long double mass_, long double longitude_, long double perihelion_, long double velocity_, bool reversed_, unsigned short numMoons_);
-    Planet(std::string n, long i, long double m, long double pX, long double pY, long double vX, long double vY);
+    Planet(std::string name_, int id_, long double mass_, long double longitude_, long double perihelion_, long double velocity_, bool reversed_, unsigned short numMoons_);
+    Planet(std::string n, int i, long double m, long double pX, long double pY, long double vX, long double vY);
     Planet() : Planet("Planet", rand(), 0, 0, 0, 0, false, 0) {}
     
     /*bool equals(Planet other);

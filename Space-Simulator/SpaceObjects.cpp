@@ -8,7 +8,7 @@
 
 #include "SpaceObjects.hpp"
 
-SpaceObject::SpaceObject(std::string name_, long id_, long double mass_, long double vx_, long double vy_, long double px_, long double py_) {
+SpaceObject::SpaceObject(std::string name_, int id_, long double mass_, long double vx_, long double vy_, long double px_, long double py_) {
     name = name_;
     id = id_;
     mass = mass_;

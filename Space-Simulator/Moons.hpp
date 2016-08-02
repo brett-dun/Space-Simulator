@@ -15,7 +15,7 @@
 
 class Moon : protected SpaceObject {
 public:
-    Moon(std::string name_, long id_, long double mass_, long double longitude_, long double pericenter_, long double velocity_, bool retrograde_);
+    Moon(std::string name_, int id_, long double mass_, long double longitude_, long double pericenter_, long double velocity_, bool retrograde_);
     Moon() : Moon("Moon", rand(), 0, 0, 0, 0, false) {}
     
     std::string toString();
