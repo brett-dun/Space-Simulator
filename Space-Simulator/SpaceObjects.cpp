@@ -18,6 +18,27 @@ SpaceObject::SpaceObject(std::string name_, int id_, long double mass_, long dou
     py = py_;
     velocity = sqrt(pow(vx, 2) + pow(vy, 2));
 }
+SpaceObject::SpaceObject(const SpaceObject &obj) {
+    name = obj.name;
+    id = obj.id;
+    mass = obj.mass;
+    vx = obj.vx;
+    vy = obj.vy;
+    px = obj.px;
+    py = obj.py;
+    velocity = obj.velocity;
+}
+SpaceObject::~SpaceObject() {
+    this->name.~basic_string();
+    id = NULL;
+    mass = NULL;
+    vx = NULL;
+    vy = NULL;
+    px = NULL;
+    py = NULL;
+    velocity = NULL;
+}
+
 
 bool SpaceObject::equals(SpaceObject other) {
     if(this->mass != other.mass) {

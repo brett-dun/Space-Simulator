@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Space-Simulator/SpaceObjects.cpp"
-            timestampString = "491716524.44563"
+            timestampString = "491891306.188906"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "SpaceObject::equals(SpaceObject other)"
             landmarkType = "5">
          </BreakpointContent>

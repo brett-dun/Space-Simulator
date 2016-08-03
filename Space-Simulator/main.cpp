@@ -9,6 +9,7 @@
 #include <iostream>
 
 #include "Planets.hpp"
+#include "Stars.hpp"
 #include "SpaceObjects.hpp"
 
 int main(int argc, const char * argv[]) {
@@ -19,7 +20,7 @@ int main(int argc, const char * argv[]) {
     const unsigned int TIME = (24 * 60 * 60);
     
     //Sun
-    Planet sun = SUN;
+    Star sun = SUN;
     
     //Inner solar system
     Planet mercury = MERCURY;
@@ -36,8 +37,8 @@ int main(int argc, const char * argv[]) {
     //Exoplanets (and dwarf planets)
     Planet pluto = PLUTO;
     
-    //Planet one = Planet("one", 0, pow(10, 30), 0, AU, 0, false);
-    //Planet two = Planet("two", 1, pow(10, 30), 180, AU, 0, false);
+    //Planet one = Planet("one", 0, 9.10938356e-31, 0, 500 * AU, 0, false, 0);
+    //Planet two = Planet("two", 1, 1.98892e30 * 12e9, 0, 0, 0, false, 0);
     
     SpaceObject solarSystem[ARRAY_SIZE];
     solarSystem[0] = sun;
@@ -50,30 +51,31 @@ int main(int argc, const char * argv[]) {
     solarSystem[7] = uranus;
     solarSystem[8] = neptune;
     solarSystem[9] = pluto;
-    //planets[0] = one;
-    //planets[1] = two;
+    //solarSystem[0] = one;
+    //solarSystem[1] = two;
     
     
     
-    std::string s;
+    /*std::string s;
     for(int i = 0; i < ARRAY_SIZE; i++) {
         std::string temp = solarSystem[i].getName();
         s += (temp + " px," + temp + " py," + temp + " vx," + temp + " vy,");
     }
-    std::cout << s << "\n";
+    std::cout << s << "\n";*/
     
     //int count = 0;
     //INT_MAX
     for(unsigned short count = 0; count < 365; count++) {
+    //while (solarSystem[0].getPX() > 473.937227 * AU) {
         
         //Display info on the planets
-        //std::cout << "Day " << count << ":\n";
+        std::cout << "Day " << count << ":\n";
         for(int i = 0; i < ARRAY_SIZE; i++) {
             //std::cout << solarSystem[i].toString() << "\n";
-            //std::cout << solarSystem[i].toSimpleString() << "\n";
-            std::cout << solarSystem[i].toCSV();
+            std::cout << solarSystem[i].toSimpleString() << "\n";
+            //std::cout << solarSystem[i].toCSV();
         }
-        std::cout << "\n";
+        //std::cout << "\n";
         
         //Calculate forces on each planet
         long double force[ARRAY_SIZE][2];

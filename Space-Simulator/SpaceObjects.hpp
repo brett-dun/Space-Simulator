@@ -23,6 +23,8 @@ class SpaceObject {
 public:
     SpaceObject(std::string name_, int id_, long double mass_, long double vx_, long double vy_, long double px_, long double py_);
     SpaceObject() : SpaceObject("Space Object", rand(), 0, 0, 0, 0, 0) {}
+    SpaceObject(const SpaceObject &obj);
+    ~SpaceObject();
     
     bool equals(SpaceObject other);
     bool optomizedEquals(SpaceObject other);

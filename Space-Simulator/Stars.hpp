@@ -13,13 +13,13 @@
 
 #include "SpaceObjects.hpp"
 
-class Star : protected SpaceObject {
+class Star : public SpaceObject {
 public:
-    Star(std::string name_, int id_, long double mass_, long double velocity_);
-    Star() : Star("Star", rand(), 0, 0) {}
+    Star(std::string name_, int id_, long double mass_, long double vx_, long double vy_, long double px_, long double py_);
+    Star() : Star("Star", rand(), 0, 0, 0, 0, 0) {}
 };
 
-const Star SUN =                Star("Sun",   0,  1.98892 * pow(10, 30),  0);
+const Star SUN =                Star("Sun",   0,  1.98892 * pow(10, 30), 0, 0, 0, 0);
 const Star PROXIMA_CENTAURI =   Star();
 const Star ALPHA_CENTAURI_A =   Star();
 const Star ALPHA_CENTAURI_B =   Star();

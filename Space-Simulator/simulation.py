@@ -11,7 +11,8 @@ AU = (149597870.7 * 10**3)     # 149.6 million km, in meters.
 #SCALE = 250 / AU
 SCALE = 50 / AU
 
-TIMESTOP = 24*60*60
+#TIMESTOP = 24*60*60
+TIMESTOP = 10
 
 class Body(Turtle):
     """Subclass of Turtle representing a gravitationally-acting body.
@@ -58,10 +59,10 @@ class Body(Turtle):
         # Compute the force of attraction
         f = G * self.mass * other.mass / (d**2)
 
-        print(self.px)
-        print(self.mass)
-        print(d)
-        print(f)
+        #print(self.px)
+        #print(self.mass)
+        #print(d)
+        #print(f)
         
         # Compute the direction of the force.
         theta = math.atan2(dy, dx)
@@ -118,7 +119,6 @@ def loop(bodies):
     
     step = 0
     while True:
-        #while True:
         update_info(step, bodies)
         step += 1
         
@@ -223,26 +223,26 @@ def main():
     jupiter.update_start()
     jupiter.pencolor('orange')
     
-    """obj1 = Body()
+    obj1 = Body()
     obj1.name = 'obj1'
-    obj1.mass = 10**30
-    obj1.periHelion = AU
+    obj1.mass = 9.10938356 * 10**-31
+    obj1.periHelion = 474 * AU
     obj1.update_start()
     obj1.pencolor('red')
 
     obj2 = Body()
     obj2.name = 'obj2'
-    obj2.mass = 10**30
-    obj2.periHelion = AU
-    obj2.longitudeOfPerihelion = math.radians(-180)
-    obj2.update_start()
-    obj2.pencolor('red')"""
+    obj2.mass = 1.98892 * 10**30 * 12 * 10**9
+    #obj2.periHelion = AU
+    #obj2.longitudeOfPerihelion = math.radians(-180)
+    #obj2.update_start()
+    obj2.pencolor('black')
     
     #update_info(0, [sun, mercury, venus, earth, mars, jupiter])
     
-    loop([sun, mercury, venus, earth, mars, jupiter])
+    #loop([sun, mercury, venus, earth, mars, jupiter])
     #loop([sun, mercury, venus, ])
-    #loop([obj1, obj2])
+    loop([obj1, obj2])
 
 if __name__ == '__main__':
     main()

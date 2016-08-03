@@ -8,17 +8,17 @@
 
 #include "Planets.hpp"
 
-Planet::Planet(std::string name_, int id_, long double mass_, long double longitude_, long double perihelion_, long double velocity_, bool reversed_, unsigned short numMoons_) {
+Planet::Planet(std::string name_, int id_, long double mass_, long double longitude_, long double periastron_, long double velocity_, bool reversed_, unsigned short numMoons_) {
     name = name_;
     id = id_;
     mass = mass_;
-    longitudeOfPerihelion = (M_PI / 180) * longitude_;
-    perihelion = perihelion_;
+    longitudeOfPeriastron = (M_PI / 180) * longitude_;
+    periastron = periastron_;
     velocity = velocity_;
-    px = perihelion * cos(longitudeOfPerihelion);
-    py = perihelion * sin(longitudeOfPerihelion);
-    vx = velocity * sin(longitudeOfPerihelion);
-    vy = velocity * cos(longitudeOfPerihelion);
+    px = periastron * cos(longitudeOfPeriastron);
+    py = periastron * sin(longitudeOfPeriastron);
+    vx = velocity * sin(longitudeOfPeriastron);
+    vy = velocity * cos(longitudeOfPeriastron);
     reversed = reversed_;
     
     if( vx < 0 ) {
@@ -29,16 +29,16 @@ Planet::Planet(std::string name_, int id_, long double mass_, long double longit
         vy = -vy;
     }
     
-    if( longitudeOfPerihelion >= 0 && longitudeOfPerihelion <= (M_PI / 2) ) {
+    if( longitudeOfPeriastron >= 0 && longitudeOfPeriastron <= (M_PI / 2) ) {
         //vx = vx;
         vy = -vy;
-    } else if( longitudeOfPerihelion >= (M_PI / 2) && longitudeOfPerihelion <= M_PI ) {
+    } else if( longitudeOfPeriastron >= (M_PI / 2) && longitudeOfPeriastron <= M_PI ) {
         //vx = vx;
         //vy = vy;
-    } else if( longitudeOfPerihelion >= M_PI && longitudeOfPerihelion <= (3 * M_PI / 2) ){
+    } else if( longitudeOfPeriastron >= M_PI && longitudeOfPeriastron <= (3 * M_PI / 2) ){
         vx = -vx;
         vy = -vy;
-    } else if( (longitudeOfPerihelion >= 3*M_PI/2 && longitudeOfPerihelion <= 2*M_PI) || (longitudeOfPerihelion <= 0 && longitudeOfPerihelion >= -M_PI/2) ) {
+    } else if( (longitudeOfPeriastron >= 3*M_PI/2 && longitudeOfPeriastron <= 2*M_PI) || (longitudeOfPeriastron <= 0 && longitudeOfPeriastron >= -M_PI/2) ) {
         vx = -vx;
         //vy = vy;
     }
@@ -57,8 +57,8 @@ Planet::Planet(std::string n, int i, long double m, long double pX, long double 
     name = n;
     id = i;
     mass = m;
-    longitudeOfPerihelion = 0;
-    perihelion = 0;
+    longitudeOfPeriastron = 0;
+    periastron = 0;
     px = pX;
     py = pY;
     vx = vX;
