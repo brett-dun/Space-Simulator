@@ -16,8 +16,8 @@ int main(int argc, const char * argv[]) {
     // insert code here...
     //std::cout << "Hello, World!\n";
     
-    const unsigned short ARRAY_SIZE = 10;
-    const unsigned int TIME = (24 * 60 * 60);
+    const unsigned short ARRAY_SIZE = 10; //Number of space objects that will exist in this simulation
+    const unsigned int TIME = (24 * 60 * 60);  //The amount of time that goes by between each object moving
     
     //Sun
     Star sun = SUN;

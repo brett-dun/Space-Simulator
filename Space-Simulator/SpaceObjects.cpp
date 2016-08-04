@@ -129,28 +129,28 @@ void SpaceObject::setPY(long double var) {
 }
 
 
-std::string SpaceObject::getName() {
+std::string SpaceObject::getName() const {
     return name;
 }
-long SpaceObject::getID() {
+long SpaceObject::getID() const {
     return id;
 }
-long double SpaceObject::getMass() {
+long double SpaceObject::getMass() const {
     return mass;
 }
 
-long double SpaceObject::getVelocity() {
+long double SpaceObject::getVelocity() const {
     return velocity;
 }
-long double SpaceObject::getVX() {
+long double SpaceObject::getVX() const {
     return vx;
 }
-long double SpaceObject::getVY() {
+long double SpaceObject::getVY() const {
     return vy;
 }
-long double SpaceObject::getPX() {
+long double SpaceObject::getPX() const {
     return px;
 }
-long double SpaceObject::getPY() {
+long double SpaceObject::getPY() const {
     return py;
 }

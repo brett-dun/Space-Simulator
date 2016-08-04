@@ -40,15 +40,15 @@ public:
     void setPX(long double var);
     void setPY(long double var);
     
-    std::string getName();
-    long getID();
-    long double getMass();
+    std::string getName() const;
+    long getID() const;
+    long double getMass() const;
     
-    long double getVelocity();
-    long double getVX();
-    long double getVY();
-    long double getPX();
-    long double getPY();
+    long double getVelocity() const;
+    long double getVX() const;
+    long double getVY() const;
+    long double getPX() const;
+    long double getPY() const;
     
 protected:
     

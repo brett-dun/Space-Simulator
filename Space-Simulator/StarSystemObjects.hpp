@@ -17,7 +17,7 @@ class StarSystemObject : public SpaceObject {
 public:
     
     StarSystemObject(std::string name_, int id_, long double mass_, long double longitude_, long double periastron_, long double velocity_, bool reversed_);
-    StarSystemObject() : StarSystemObject("Star System Object", rand(), 0, 0, 0, 0, 0, 0, 0, false) {}
+    StarSystemObject() : StarSystemObject("Star System Object", rand(), 0, 0, 0, 0, false) {}
     StarSystemObject(const StarSystemObject &obj);
     ~StarSystemObject();
     
