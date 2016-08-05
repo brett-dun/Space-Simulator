@@ -1,3 +1,7 @@
+"""
+    Originally based off of: https://github.com/akuchling/50-examples.git (gravity.py)
+"""
+
 #!/usr/bin/env python
 
 import math

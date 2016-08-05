@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <ctime>
 
 #include "Planets.hpp"
 #include "Stars.hpp"
@@ -15,6 +16,31 @@
 int main(int argc, const char * argv[]) {
     // insert code here...
     //std::cout << "Hello, World!\n";
+    
+    /*double d = 1.23456789012345678901234567890l; std::cout << std::setprecision(31) << d << "\n"; std::cout << sizeof(d) << "\n";
+    double ld = 1.23456789012345678901234567890l; std::cout << std::setprecision(31) << ld << "\n"; std::cout << sizeof(ld) << "\n";
+    */
+    
+    
+    
+    /*long double a = 2;
+    long double b = 3;
+    long double c = 0;
+    long double d = 0;
+    long double f = 10;
+    
+    const clock_t s = clock();
+    
+    for(int i = 0; i < 100000; i++) {
+        c += pow(a,f);
+        d += pow(b,f);
+    }
+    
+    clock_t e = clock();
+    std::cout << e-s << "\n";
+    
+    
+    return 0;*/
     
     const unsigned short ARRAY_SIZE = 10; //Number of space objects that will exist in this simulation
     const unsigned int TIME = (24 * 60 * 60);  //The amount of time that goes by between each object moving
@@ -63,6 +89,8 @@ int main(int argc, const char * argv[]) {
     }
     std::cout << s << "\n";*/
     
+    const clock_t start = clock(); //std::cout << start << "\n";
+    
     //int count = 0;
     //INT_MAX
     for(unsigned short count = 0; count < 365; count++) {
@@ -78,13 +106,13 @@ int main(int argc, const char * argv[]) {
         //std::cout << "\n";
         
         //Calculate forces on each planet
-        long double force[ARRAY_SIZE][2];
+        double force[ARRAY_SIZE][2];
         for(int i = 0; i < ARRAY_SIZE; i++) {
             
             //std::cout << i << "\n";
             
-            long double fx = 0;
-            long double fy = 0;
+            double fx = 0;
+            double fy = 0;
             
             //Calculate the gravitation force between the current planet and the other planet
             for(int j = 0; j < ARRAY_SIZE; j++) {
@@ -92,7 +120,7 @@ int main(int argc, const char * argv[]) {
                 //Don't calculate the force with itself
                 if(!solarSystem[i].optomizedEquals(solarSystem[j])) {
                     
-                    long double* forces = solarSystem[i].attraction(solarSystem[j]); //get the array of forces
+                    double* forces = solarSystem[i].attraction(solarSystem[j]); //get the array of forces
                     fx += forces[0]; //get the force in the x direction and add it
                     fy += forces[1]; //get the force in the y direction and add it
                     delete forces; //delete the array of forces (we no longer need it)
@@ -123,6 +151,10 @@ int main(int argc, const char * argv[]) {
         
         //count++;
     }
+    
+    clock_t end = clock();
+    
+    std::cout << end-start << "\n";
     
     return 0;
 }

@@ -23,8 +23,8 @@ class Planet : public StarSystemObject {
 public:
     
     //Planet(name, mass, longitudeOfPerihelion, periastron, velocity, reversed, numMoons)
-    Planet(std::string name_, int id_, long double mass_, long double longitude_, long double periastron_, long double velocity_, bool reversed_, unsigned short numMoons_);
-    Planet(std::string n, int i, long double m, long double pX, long double pY, long double vX, long double vY);
+    Planet(std::string name_, int id_, double mass_, double longitude_, double periastron_, double velocity_, bool reversed_, unsigned short numMoons_);
+    Planet(std::string n, int i, double m, double pX, double pY, double vX, double vY);
     Planet() : Planet("Planet", rand(), 0, 0, 0, 0, false, 0) {}
     
     /*bool equals(Planet other);
@@ -34,39 +34,39 @@ public:
     std::string toSimpleString();
     std::string toCSV();
     
-    long double* attraction(Planet other);
-    //long double yAttraction(Planet other);
+    double* attraction(Planet other);
+    //double yAttraction(Planet other);
     
-    void setVX(long double var);
-    void setVY(long double var);
-    void setPX(long double var);
-    void setPY(long double var);*/
+    void setVX(double var);
+    void setVY(double var);
+    void setPX(double var);
+    void setPY(double var);*/
     void addMoon(unsigned short pos, Moon m);
     
     /*std::string getName();
     long getID();
-    long double getMass();
-    long double getLongitudeOfPerihelion();
-    long double getPerihelion();
-    long double getVelocity();
-    long double getVX();
-    long double getVY();
-    long double getPX();
-    long double getPY();
+    double getMass();
+    double getLongitudeOfPerihelion();
+    double getPerihelion();
+    double getVelocity();
+    double getVX();
+    double getVY();
+    double getPX();
+    double getPY();
     bool getReversed();*/
     
 private:
     //Original Stuff
     /*std::string name;
     long id;
-    long double mass; //kilograms (kg)
-    long double longitudeOfPerihelion; //meters (m)
-    long double perihelion; //meters (m)
-    long double velocity; //meters per second (m/s)
-    long double vx; //velocity in the x direction (m/s)
-    long double vy; //velocity in the y direction (m/s)
-    long double px; //position in the x direction (m)
-    long double py; //position in the y direction (m)
+    double mass; //kilograms (kg)
+    double longitudeOfPerihelion; //meters (m)
+    double perihelion; //meters (m)
+    double velocity; //meters per second (m/s)
+    double vx; //velocity in the x direction (m/s)
+    double vy; //velocity in the y direction (m/s)
+    double px; //position in the x direction (m)
+    double py; //position in the y direction (m)
     bool reversed;
     //New Stuff*/
     unsigned short numMoons;

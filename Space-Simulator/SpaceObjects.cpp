@@ -8,7 +8,7 @@
 
 #include "SpaceObjects.hpp"
 
-SpaceObject::SpaceObject(std::string name_, int id_, long double mass_, long double vx_, long double vy_, long double px_, long double py_) {
+SpaceObject::SpaceObject(std::string name_, int id_, double mass_, double vx_, double vy_, double px_, double py_) {
     name = name_;
     id = id_;
     mass = mass_;
@@ -17,6 +17,9 @@ SpaceObject::SpaceObject(std::string name_, int id_, long double mass_, long dou
     px = px_;
     py = py_;
     velocity = sqrt(pow(vx, 2) + pow(vy, 2));
+    
+    vz = 0;
+    pz = 0;
 }
 SpaceObject::SpaceObject(const SpaceObject &obj) {
     name = obj.name;
@@ -27,6 +30,9 @@ SpaceObject::SpaceObject(const SpaceObject &obj) {
     px = obj.px;
     py = obj.py;
     velocity = obj.velocity;
+    
+    vz = obj.vz;
+    pz = obj.pz;
 }
 SpaceObject::~SpaceObject() {
     this->name.~basic_string();
@@ -37,21 +43,35 @@ SpaceObject::~SpaceObject() {
     px = NULL;
     py = NULL;
     velocity = NULL;
+    
+    vz = NULL;
+    pz = NULL;
 }
 
 
 bool SpaceObject::equals(SpaceObject other) {
     if(this->mass != other.mass) {
         return false;
-    } else if(this->velocity != other.velocity) {
+    }
+    if(this->velocity != other.velocity) {
         return false;
-    } else if(this->px != other.px) {
+    }
+    if(this->px != other.px) {
         return false;
-    } else if(this->py != other.py) {
+    }
+    if(this->py != other.py) {
         return false;
-    } else if(this->vx != other.vx) {
+    }
+    if(this->vx != other.vx) {
         return false;
-    } else if(this->vy != other.vy) {
+    }
+    if(this->vy != other.vy) {
+        return false;
+    }
+    if(this->pz != other.pz) {
+        return false;
+    }
+    if(this->vz != other.vz) {
         return false;
     }
     return true;
@@ -63,28 +83,29 @@ bool SpaceObject::optomizedEquals(SpaceObject other) {
 
 std::string SpaceObject::toString() {
     std::stringstream ss;
-    ss << std::setprecision(8) << "SpaceObject [name=" << name << ", id=" << id << ", mass=" << mass << ", velocity=" << velocity << ", px=" << px << ", py=" << py << ", vx=" << vx << ", vy=" << vy << "]";
+    ss << std::setprecision(16) << "SpaceObject [name=" << name << ", id=" << id << ", mass=" << mass << ", velocity=" << velocity << ", px=" << px << ", py=" << py << ", vx=" << vx << ", vy=" << vy << "]";
     return ss.str();
 }
 
 std::string SpaceObject::toSimpleString() {
     std::stringstream ss;
-    ss << std::setprecision(8) << name << "\t[px=" << px << "\tpy=" << py << "\tvx=" << vx << "\tvy=" << vy << "]";
+    ss << std::setprecision(16) << name << "\t[px=" << px << "\tpy=" << py << "\tvx=" << vx << "\tvy=" << vy << "]";
     return ss.str();
 }
 std::string SpaceObject::toCSV() {
     std::stringstream ss;
-    ss << std::setprecision(8) << px << "," << py << "," << vx << "," << vy << ",";
+    ss << std::setprecision(16) << px << "," << py << "," << vx << "," << vy << ",";
     return ss.str();
 }
 
-long double* SpaceObject::attraction(SpaceObject other) {
-    long double x = other.px - this->px;
-    long double y = other.py - this->py;
-    long double d = sqrt(pow(x, 2) + pow(y, 2));
-    long double* temp = new long double[2];
+double* SpaceObject::attraction(SpaceObject other) {
+    double x = other.px - this->px;
+    double y = other.py - this->py;
+    double d = sqrt(pow(x, 2) + pow(y, 2));
+    double* temp = new double[3];
     temp[0] = 0;
     temp[1] = 0;
+    temp[2] = 0;
     
     if (d == 0) {
         /*if (other.mass > this->mass) {
@@ -97,9 +118,9 @@ long double* SpaceObject::attraction(SpaceObject other) {
         return temp;
     }
     
-    long double angle = atan2(y, x);
+    double angle = atan2(y, x);
     //std::cout << "angle: " << angle << "\n";
-    long double f = G * this->mass * other.mass / pow(d, 2);
+    double f = G * this->mass * other.mass / pow(d, 2);
     
     //std::cout << "m: " << this->mass << "\n";
     
@@ -110,23 +131,32 @@ long double* SpaceObject::attraction(SpaceObject other) {
     //std::cout << temp[0] << "\n";
     temp[1] = sin(angle) * f;
     //std::cout << temp[1] << "\n";
+    temp[2] = sin(atan2(this->pz - other.pz, d)) * f;
     
     return temp;
 }
 
 
-void SpaceObject::setVX(long double var) {
+void SpaceObject::setVX(double var) {
     vx = var;
 }
-void SpaceObject::setVY(long double var) {
+void SpaceObject::setVY(double var) {
     vy = var;
 }
-void SpaceObject::setPX(long double var) {
+void SpaceObject::setPX(double var) {
     px = var;
 }
-void SpaceObject::setPY(long double var) {
+void SpaceObject::setPY(double var) {
     py = var;
 }
+
+void SpaceObject::setVZ(double var) {
+    vz = var;
+}
+void SpaceObject::setPZ(double var) {
+    pz = var;
+}
+
 
 
 std::string SpaceObject::getName() const {
@@ -135,22 +165,29 @@ std::string SpaceObject::getName() const {
 long SpaceObject::getID() const {
     return id;
 }
-long double SpaceObject::getMass() const {
+double SpaceObject::getMass() const {
     return mass;
 }
 
-long double SpaceObject::getVelocity() const {
+double SpaceObject::getVelocity() const {
     return velocity;
 }
-long double SpaceObject::getVX() const {
+double SpaceObject::getVX() const {
     return vx;
 }
-long double SpaceObject::getVY() const {
+double SpaceObject::getVY() const {
     return vy;
 }
-long double SpaceObject::getPX() const {
+double SpaceObject::getPX() const {
     return px;
 }
-long double SpaceObject::getPY() const {
+double SpaceObject::getPY() const {
     return py;
+}
+
+double SpaceObject::getVZ() const {
+    return vz;
+}
+double SpaceObject::getPZ() const {
+    return pz;
 }

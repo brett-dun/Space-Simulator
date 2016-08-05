@@ -15,7 +15,7 @@
 
 class Star : public SpaceObject {
 public:
-    Star(std::string name_, int id_, long double mass_, long double vx_, long double vy_, long double px_, long double py_);
+    Star(std::string name_, int id_, double mass_, double vx_, double vy_, double px_, double py_);
     Star() : Star("Star", rand(), 0, 0, 0, 0, 0) {}
 };
 

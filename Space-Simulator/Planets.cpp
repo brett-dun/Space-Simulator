@@ -8,7 +8,7 @@
 
 #include "Planets.hpp"
 
-Planet::Planet(std::string name_, int id_, long double mass_, long double longitude_, long double periastron_, long double velocity_, bool reversed_, unsigned short numMoons_) {
+Planet::Planet(std::string name_, int id_, double mass_, double longitude_, double periastron_, double velocity_, bool reversed_, unsigned short numMoons_) {
     name = name_;
     id = id_;
     mass = mass_;
@@ -53,7 +53,7 @@ Planet::Planet(std::string name_, int id_, long double mass_, long double longit
     moons = new Moon[numMoons];
 }
 
-Planet::Planet(std::string n, int i, long double m, long double pX, long double pY, long double vX, long double vY) {
+Planet::Planet(std::string n, int i, double m, double pX, double pY, double vX, double vY) {
     name = n;
     id = i;
     mass = m;
@@ -112,11 +112,11 @@ std::string Planet::toCSV() {
     return ss.str();
 }
 
-long double* Planet::attraction(Planet other) {
-    long double x = other.px - this->px;
-    long double y = other.py - this->py;
-    long double d = sqrt(pow(x, 2) + pow(y, 2));
-    long double* temp = new long double[2];
+double* Planet::attraction(Planet other) {
+    double x = other.px - this->px;
+    double y = other.py - this->py;
+    double d = sqrt(pow(x, 2) + pow(y, 2));
+    double* temp = new double[2];
     temp[0] = 0;
     temp[1] = 0;
     
@@ -131,9 +131,9 @@ long double* Planet::attraction(Planet other) {
         /*return temp;
     }
     
-    long double angle = atan2(y, x);
+    double angle = atan2(y, x);
     //std::cout << "angle: " << angle << "\n";
-    long double f = G * this->mass * other.mass / pow(d, 2);
+    double f = G * this->mass * other.mass / pow(d, 2);
     
     //std::cout << "m: " << this->mass << "\n";
     
@@ -149,16 +149,16 @@ long double* Planet::attraction(Planet other) {
 }
 
 
-void Planet::setVX(long double var) {
+void Planet::setVX(double var) {
     vx = var;
 }
-void Planet::setVY(long double var) {
+void Planet::setVY(double var) {
     vy = var;
 }
-void Planet::setPX(long double var) {
+void Planet::setPX(double var) {
     px = var;
 }
-void Planet::setPY(long double var) {
+void Planet::setPY(double var) {
     py = var;
 }*/
 
@@ -173,38 +173,38 @@ void Planet::addMoon(unsigned short pos, Moon m) {
 long Planet::getID() {
     return id;
 }
-long double Planet::getMass() {
+double Planet::getMass() {
     return mass;
 }
-long double Planet::getLongitudeOfPerihelion() {
+double Planet::getLongitudeOfPerihelion() {
     return longitudeOfPerihelion;
 }
-long double Planet::getPerihelion() {
+double Planet::getPerihelion() {
     return perihelion;
 }
-long double Planet::getVelocity() {
+double Planet::getVelocity() {
     return velocity;
 }
-long double Planet::getVX() {
+double Planet::getVX() {
     return vx;
 }
-long double Planet::getVY() {
+double Planet::getVY() {
     return vy;
 }
-long double Planet::getPX() {
+double Planet::getPX() {
     return px;
 }
-long double Planet::getPY() {
+double Planet::getPY() {
     return py;
 }
 bool Planet::getReversed() {
     return reversed;
 }*/
 
-/*long double Planet::yAttraction(Planet other) {
-    long double x = other.px - this->px;
-    long double y = other.py - this->py;
-    long double d = sqrt(pow(x, 2) + pow(y, 2));
+/*double Planet::yAttraction(Planet other) {
+    double x = other.px - this->px;
+    double y = other.py - this->py;
+    double d = sqrt(pow(x, 2) + pow(y, 2));
     if (d == 0) {
         if (other.mass > this->mass) {
             other.mass += this->mass;

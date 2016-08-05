@@ -8,7 +8,7 @@
 
 #include "Moons.hpp"
 
-Moon::Moon(std::string name_, int id_, long double mass_, long double longitude_, long double pericenter_, long double velocity_, bool retrograde_){
+Moon::Moon(std::string name_, int id_, double mass_, double longitude_, double pericenter_, double velocity_, bool retrograde_){
     name = name_;
     id = id_;
     longitudeOfPericenter = longitude_;
@@ -78,10 +78,10 @@ bool Moon::equals(Moon other) {
     return true;
 }
 
-long double Moon::getLongitudeOfPericenter() {
+double Moon::getLongitudeOfPericenter() {
     return longitudeOfPericenter;
 }
-long double Moon::getPericenter() {
+double Moon::getPericenter() {
     return pericenter;
 }
 bool Moon::isRetrograde() {

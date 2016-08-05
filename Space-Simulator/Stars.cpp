@@ -8,7 +8,7 @@
 
 #include "Stars.hpp"
 
-Star::Star(std::string name_, int id_, long double mass_, long double vx_, long double vy_, long double px_, long double py_) {
+Star::Star(std::string name_, int id_, double mass_, double vx_, double vy_, double px_, double py_) {
     name = name_;
     id = id_;
     mass = mass_;

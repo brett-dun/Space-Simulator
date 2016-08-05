@@ -8,7 +8,7 @@
 
 #include "StarSystemObjects.hpp"
 
-StarSystemObject::StarSystemObject(std::string name_, int id_, long double mass_, long double longitude_, long double periastron_, long double velocity_, bool reversed_) {
+StarSystemObject::StarSystemObject(std::string name_, int id_, double mass_, double longitude_, double periastron_, double velocity_, bool reversed_) {
     name = name_;
     id = id_;
     mass = mass_;
@@ -109,10 +109,10 @@ bool StarSystemObject::equals(StarSystemObject other) {
     return true;
 }
 
-long double StarSystemObject::getLongitudeOfPeriastron() {
+double StarSystemObject::getLongitudeOfPeriastron() {
     return longitudeOfPeriastron;
 }
-long double StarSystemObject::getPeriastron() {
+double StarSystemObject::getPeriastron() {
     return periastron;
 }
 bool StarSystemObject::isReversed() {
