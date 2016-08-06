@@ -1,14 +1,14 @@
 //
-//  Stars.cpp
+//  MassiveObjects.cpp
 //  Space-Simulator
 //
-//  Created by Brett Duncan on 7/30/16.
+//  Created by Brett Duncan on 8/5/16.
 //  Copyright © 2016 Brett James Duncan. All rights reserved.
 //
 
-#include "Stars.hpp"
+#include "MassiveObjects.hpp"
 
-Star::Star(std::string name_, int id_, double mass_, double vx_, double vy_, double px_, double py_) {
+MassiveObject::MassiveObject(std::string name_, int id_, double mass_, double vx_, double vy_, double px_, double py_) {
     name = name_;
     id = id_;
     mass = mass_;
@@ -19,6 +19,6 @@ Star::Star(std::string name_, int id_, double mass_, double vx_, double vy_, dou
     velocity = sqrt(pow(vx, 2) + pow(vy, 2));
 }
 
-Star::~Star() {
+MassiveObject::~MassiveObject() {
     
 }

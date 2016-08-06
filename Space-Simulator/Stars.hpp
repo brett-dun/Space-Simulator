@@ -11,12 +11,13 @@
 
 #include <stdio.h>
 
-#include "SpaceObjects.hpp"
+#include "MassiveObjects.hpp"
 
-class Star : public SpaceObject {
+class Star : public MassiveObject {
 public:
     Star(std::string name_, int id_, double mass_, double vx_, double vy_, double px_, double py_);
     Star() : Star("Star", rand(), 0, 0, 0, 0, 0) {}
+    ~Star();
 };
 
 const Star SUN =                Star("Sun",                 0,      1.98892e30,             0, 0, 0, 0);

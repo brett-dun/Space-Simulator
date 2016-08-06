@@ -67,8 +67,9 @@ private:
     double vy; //velocity in the y direction (m/s)
     double px; //position in the x direction (m)
     double py; //position in the y direction (m)
-    bool reversed;
-    //New Stuff*/
+    bool reversed;*/
+    
+    //New Stuff
     unsigned short numMoons;
     Moon* moons;
     

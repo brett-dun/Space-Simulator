@@ -13,7 +13,7 @@
 
 #include "SpaceObjects.hpp"
 
-class Moon : protected SpaceObject {
+class Moon : public SpaceObject {
 public:
     Moon(std::string name_, int id_, double mass_, double longitude_, double pericenter_, double velocity_, bool retrograde_);
     Moon() : Moon("Moon", rand(), 0, 0, 0, 0, false) {}

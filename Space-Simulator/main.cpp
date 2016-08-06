@@ -89,7 +89,7 @@ int main(int argc, const char * argv[]) {
     }
     std::cout << s << "\n";*/
     
-    const clock_t start = clock(); //std::cout << start << "\n";
+    //const clock_t start = clock(); //std::cout << start << "\n";
     
     //int count = 0;
     //INT_MAX
@@ -152,9 +152,9 @@ int main(int argc, const char * argv[]) {
         //count++;
     }
     
-    clock_t end = clock();
+    //clock_t end = clock();
     
-    std::cout << end-start << "\n";
+    //std::cout << end-start << "\n";
     
     return 0;
 }
