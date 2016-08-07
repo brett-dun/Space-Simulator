@@ -15,8 +15,11 @@ StarSystemObject::StarSystemObject(std::string name_, int id_, double mass_, dou
     longitudeOfPeriastron = (M_PI / 180) * longitude_;
     periastron = periastron_;
     velocity = velocity_;
-    px = periastron * cos(longitudeOfPeriastron);
-    py = periastron * sin(longitudeOfPeriastron);
+    inclination = 0;
+    pz = periastron * sin(inclination); //Check the math on this
+    px = periastron * cos(inclination) * cos(longitudeOfPeriastron);
+    py = periastron * cos(inclination) * sin(longitudeOfPeriastron);
+   
     vx = velocity * sin(longitudeOfPeriastron);
     vy = velocity * cos(longitudeOfPeriastron);
     reversed = reversed_;
@@ -75,6 +78,7 @@ StarSystemObject::~StarSystemObject() {
     
     longitudeOfPeriastron = NULL;
     periastron = NULL;
+    inclination = NULL;
     reversed = NULL;
 }
 

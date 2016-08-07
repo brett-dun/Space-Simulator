@@ -18,8 +18,9 @@
 
 
 //Using double allows the program to run over 87.6% faster compared to float and over 10.6% faster compared to long double
-const double G = 6.67428e-11;
-const double AU = 149597870.7e3; //(1.495978707 * pow(10, 7)) * 10e3;
+const double G = 6.67428e-11; //Gravitational Constant
+const double AU = 149597870.7e3; //(1.495978707 * pow(10, 7)) * 10e3; //Meters
+const double SPEED_OF_LIGHT = 299792458; //Meters / Second
 
 class SpaceObject {
 public:

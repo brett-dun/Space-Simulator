@@ -33,6 +33,7 @@ protected:
     
     double longitudeOfPeriastron; //meters (m)
     double periastron; //meters (m)
+    double inclination;
     
     bool reversed;
     

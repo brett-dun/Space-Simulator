@@ -101,7 +101,8 @@ std::string SpaceObject::toCSV() {
 double* SpaceObject::attraction(SpaceObject other) {
     double x = other.px - this->px;
     double y = other.py - this->py;
-    double d = sqrt(pow(x, 2) + pow(y, 2));
+    double z = other.pz - this->pz;
+    double d = sqrt(x*x + y*y +  z*z);
     double* temp = new double[3];
     temp[0] = 0;
     temp[1] = 0;
@@ -131,7 +132,7 @@ double* SpaceObject::attraction(SpaceObject other) {
     //std::cout << temp[0] << "\n";
     temp[1] = sin(angle) * f;
     //std::cout << temp[1] << "\n";
-    temp[2] = sin(atan2(this->pz - other.pz, d)) * f;
+    temp[2] = sin(atan2(z, d*d-z*z)) * f; //Check this math
     
     return temp;
 }
