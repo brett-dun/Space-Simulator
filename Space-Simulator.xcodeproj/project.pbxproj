@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8B2391F41D55908500103B1E /* MassiveObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B2391F21D55908500103B1E /* MassiveObjects.cpp */; };
+		8B2391F71D56E7F500103B1E /* Universe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B2391F51D56E7F500103B1E /* Universe.cpp */; };
 		8B4E07601D46C5E7009EADF1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B4E075F1D46C5E7009EADF1 /* main.cpp */; };
 		8B4E07691D46C701009EADF1 /* Planets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B4E07671D46C701009EADF1 /* Planets.cpp */; };
 		8B60C9E91D4DAFA5002888DF /* Stars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B60C9E71D4DAFA5002888DF /* Stars.cpp */; };
@@ -31,6 +32,8 @@
 /* Begin PBXFileReference section */
 		8B2391F21D55908500103B1E /* MassiveObjects.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MassiveObjects.cpp; sourceTree = "<group>"; };
 		8B2391F31D55908500103B1E /* MassiveObjects.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MassiveObjects.hpp; sourceTree = "<group>"; };
+		8B2391F51D56E7F500103B1E /* Universe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Universe.cpp; sourceTree = "<group>"; };
+		8B2391F61D56E7F500103B1E /* Universe.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Universe.hpp; sourceTree = "<group>"; };
 		8B4E075C1D46C5E7009EADF1 /* Space-Simulator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Space-Simulator"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4E075F1D46C5E7009EADF1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8B4E07661D46C5F3009EADF1 /* simulation.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = simulation.py; sourceTree = "<group>"; };
@@ -90,6 +93,8 @@
 				8B60C9EE1D4E597F002888DF /* StarSystemObjects.hpp */,
 				8B2391F21D55908500103B1E /* MassiveObjects.cpp */,
 				8B2391F31D55908500103B1E /* MassiveObjects.hpp */,
+				8B2391F51D56E7F500103B1E /* Universe.cpp */,
+				8B2391F61D56E7F500103B1E /* Universe.hpp */,
 			);
 			path = "Space-Simulator";
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 				8B4E07601D46C5E7009EADF1 /* main.cpp in Sources */,
 				8B4E07691D46C701009EADF1 /* Planets.cpp in Sources */,
 				8B60C9E91D4DAFA5002888DF /* Stars.cpp in Sources */,
+				8B2391F71D56E7F500103B1E /* Universe.cpp in Sources */,
 				8B60C9EF1D4E597F002888DF /* StarSystemObjects.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

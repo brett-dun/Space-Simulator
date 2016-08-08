@@ -83,18 +83,18 @@ bool SpaceObject::optomizedEquals(SpaceObject other) {
 
 std::string SpaceObject::toString() {
     std::stringstream ss;
-    ss << std::setprecision(16) << "SpaceObject [name=" << name << ", id=" << id << ", mass=" << mass << ", velocity=" << velocity << ", px=" << px << ", py=" << py << ", vx=" << vx << ", vy=" << vy << "]";
+    ss << std::setprecision(16) << "SpaceObject [name=" << name << ", id=" << id << ", mass=" << mass << ", velocity=" << velocity << ", px=" << px << ", py=" << py << ", pz=" << pz << ", vx=" << vx << ", vy=" << vy << ", vz=" << vz << "]";
     return ss.str();
 }
 
 std::string SpaceObject::toSimpleString() {
     std::stringstream ss;
-    ss << std::setprecision(16) << name << "\t[px=" << px << "\tpy=" << py << "\tvx=" << vx << "\tvy=" << vy << "]";
+    ss << std::setprecision(16) << name << "\t[px=" << px << "\tpy=" << py << "\tpz=" << pz << "\tvx=" << vx << "\tvy=" << vy << "\tvz=" << vz << "]";
     return ss.str();
 }
 std::string SpaceObject::toCSV() {
     std::stringstream ss;
-    ss << std::setprecision(16) << px << "," << py << "," << vx << "," << vy << ",";
+    ss << std::setprecision(16) << px << "," << py << "," << pz << "," << vx << "," << vy << "," << vz << ",";
     return ss.str();
 }
 
