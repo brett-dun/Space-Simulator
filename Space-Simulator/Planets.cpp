@@ -53,7 +53,24 @@ Planet::Planet(std::string name_, int id_, double mass_, double longitude_, doub
     moons = new Moon[numMoons];
 }
 
-Planet::Planet(std::string n, int i, double m, double pX, double pY, double vX, double vY) {
+Planet::Planet(const Planet & obj) {
+    name = obj.name;
+    id = obj.id;
+    mass = obj.mass;
+    longitudeOfPeriastron = obj.longitudeOfPeriastron;
+    periastron = obj.periastron;
+    px = obj.px;
+    py = obj.py;
+    pz = obj.pz;
+    vx = obj.vx;
+    vy = obj.vy;
+    vz = obj.vz;
+    velocity = sqrt(pow(vx, 2) + pow(vy, 2));
+    reversed = false;
+    moons = NULL;
+}
+
+Planet::Planet(std::string n, int i, double m, double pX, double pY, double pz_, double vX, double vY, double vz_) {
     name = n;
     id = i;
     mass = m;
@@ -61,8 +78,10 @@ Planet::Planet(std::string n, int i, double m, double pX, double pY, double vX, 
     periastron = 0;
     px = pX;
     py = pY;
+    pz = pz_;
     vx = vX;
     vy = vY;
+    vz = vz_;
     velocity = sqrt(pow(vx, 2) + pow(vy, 2));
     reversed = false;
     moons = NULL;
@@ -218,3 +237,4 @@ bool Planet::getReversed() {
     
     return sin(atan2(x, y)) * (G * this->mass * other.mass / pow(d, 2));
 }*/
+

@@ -27,16 +27,17 @@ public:
     SpaceObject(std::string name_, int id_, double mass_, double vx_, double vy_, double px_, double py_);
     SpaceObject() : SpaceObject("Space Object", rand(), 0, 0, 0, 0, 0) {}
     SpaceObject(const SpaceObject &obj);
-    ~SpaceObject();
+    //~SpaceObject();
     
     bool equals(SpaceObject other);
     bool optomizedEquals(SpaceObject other);
     
-    std::string toString();
-    std::string toSimpleString();
-    std::string toCSV();
+    std::string toString() const;
+    std::string toSimpleString() const;
+    std::string toCSV() const;
     
     double* attraction(SpaceObject other);
+    double* attraction2(SpaceObject other);
     
     void setVX(double var);
     void setVY(double var);
@@ -45,6 +46,7 @@ public:
     
     void setVZ(double var);
     void setPZ(double var);
+    void setName(std::string name);
     
     std::string getName() const;
     long getID() const;

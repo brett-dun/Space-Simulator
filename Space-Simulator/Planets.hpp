@@ -24,7 +24,8 @@ public:
     
     //Planet(name, mass, longitudeOfPerihelion, periastron, velocity, reversed, numMoons)
     Planet(std::string name_, int id_, double mass_, double longitude_, double periastron_, double velocity_, bool reversed_, unsigned short numMoons_);
-    Planet(std::string n, int i, double m, double pX, double pY, double vX, double vY);
+    Planet(const Planet &obj);
+    Planet(std::string n, int i, double m, double pX, double pY, double pz_, double vX, double vY, double vz_);
     Planet() : Planet("Planet", rand(), 0, 0, 0, 0, false, 0) {}
     
     /*bool equals(Planet other);

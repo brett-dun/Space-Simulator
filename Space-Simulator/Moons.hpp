@@ -33,22 +33,22 @@ private:
     bool retrograde;
 };
 
-const Moon Ganymede =   Moon();
-const Moon Titan =      Moon();
-const Moon Callisto =   Moon();
-const Moon Io =         Moon();
-const Moon moon =       Moon();
-const Moon Europa =     Moon();
-const Moon Triton =     Moon();
-const Moon Titania =    Moon();
-const Moon Rhea =       Moon();
-const Moon Oberon =     Moon();
-const Moon Iapetus =    Moon();
-const Moon Charon =     Moon();
-const Moon Umbriel =    Moon();
-const Moon Ariel =      Moon();
-const Moon Dione =      Moon();
-const Moon Tethys =     Moon();
+const Moon GANYMEDE =   Moon();
+const Moon TITAN =      Moon();
+const Moon CALLISTO =   Moon();
+const Moon IO =         Moon();
+const Moon MOON =       Moon();
+const Moon EUROPA =     Moon();
+const Moon TRITAN =     Moon();
+const Moon TITANIA =    Moon();
+const Moon RHEA =       Moon();
+const Moon OBERON =     Moon();
+const Moon IAPETUS =    Moon();
+const Moon CHARON =     Moon();
+const Moon UMBRIEL =    Moon();
+const Moon ARIEL =      Moon();
+const Moon DIONE =      Moon();
+const Moon TETHYS =     Moon();
 
 
 #endif /* Moons_hpp */

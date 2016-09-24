@@ -20,8 +20,10 @@ StarSystemObject::StarSystemObject(std::string name_, int id_, double mass_, dou
     px = periastron * cos(inclination) * cos(longitudeOfPeriastron);
     py = periastron * cos(inclination) * sin(longitudeOfPeriastron);
    
-    vx = velocity * sin(longitudeOfPeriastron);
-    vy = velocity * cos(longitudeOfPeriastron);
+    vz = velocity * sin(inclination);
+    vx = velocity * cos(inclination) * cos(longitudeOfPeriastron);
+    vy = velocity * cos(inclination) * sin(longitudeOfPeriastron);
+    
     reversed = reversed_;
     
     if( vx < 0 ) {
@@ -32,7 +34,11 @@ StarSystemObject::StarSystemObject(std::string name_, int id_, double mass_, dou
         vy = -vy;
     }
     
-    if( longitudeOfPeriastron >= 0 && longitudeOfPeriastron <= (M_PI / 2) ) {
+    if( vz < 0) {
+        vz = -vz;
+    }
+    
+    /*if( longitudeOfPeriastron >= 0 && longitudeOfPeriastron <= (M_PI / 2) ) {
         //vx = vx;
         vy = -vy;
     } else if( longitudeOfPeriastron >= (M_PI / 2) && longitudeOfPeriastron <= M_PI ) {
@@ -44,11 +50,24 @@ StarSystemObject::StarSystemObject(std::string name_, int id_, double mass_, dou
     } else if( (longitudeOfPeriastron >= 3*M_PI/2 && longitudeOfPeriastron <= 2*M_PI) || (longitudeOfPeriastron <= 0 && longitudeOfPeriastron >= -M_PI/2) ) {
         vx = -vx;
         //vy = vy;
+    }*/
+    
+    if( longitudeOfPeriastron >= M_PI && longitudeOfPeriastron <= M_PI * 2 ) {
+        vx = -vx;
+    }
+    
+    if( (longitudeOfPeriastron >= 0 && longitudeOfPeriastron <= (M_PI / 2)) || (longitudeOfPeriastron >= M_PI && longitudeOfPeriastron <= (3 * M_PI / 2)) || (longitudeOfPeriastron <= 0 && longitudeOfPeriastron >= -M_PI/2) ) {
+        vy = -vy;
+    }
+    
+    if( (inclination >= 0 && inclination <= M_PI) ) {
+        vz = -vz;
     }
     
     if(reversed) {
         vx = -vx;
         vy = -vy;
+        vz = -vz;
     }
 }
 StarSystemObject::StarSystemObject(const StarSystemObject &obj) {
@@ -57,8 +76,10 @@ StarSystemObject::StarSystemObject(const StarSystemObject &obj) {
     mass = obj.mass;
     vx = obj.vx;
     vy = obj.vy;
+    vz = obj.vz;
     px = obj.px;
     py = obj.py;
+    pz = obj.pz;
     velocity = obj.velocity;
     
     longitudeOfPeriastron = obj.longitudeOfPeriastron;
@@ -66,21 +87,23 @@ StarSystemObject::StarSystemObject(const StarSystemObject &obj) {
     reversed = obj.reversed;
     
 }
-StarSystemObject::~StarSystemObject() {
+/*StarSystemObject::~StarSystemObject() {
     this->name.~basic_string();
     id = NULL;
     mass = NULL;
     vx = NULL;
     vy = NULL;
+    vz = NULL;
     px = NULL;
     py = NULL;
+    pz = NULL;
     velocity = NULL;
     
     longitudeOfPeriastron = NULL;
     periastron = NULL;
     inclination = NULL;
     reversed = NULL;
-}
+}*/
 
 
 

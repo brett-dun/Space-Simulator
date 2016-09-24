@@ -19,7 +19,7 @@ public:
     StarSystemObject(std::string name_, int id_, double mass_, double longitude_, double periastron_, double velocity_, bool reversed_);
     StarSystemObject() : StarSystemObject("Star System Object", rand(), 0, 0, 0, 0, false) {}
     StarSystemObject(const StarSystemObject &obj);
-    ~StarSystemObject();
+    //~StarSystemObject();
     
     std::string toString();
     

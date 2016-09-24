@@ -20,13 +20,21 @@
 
 class Universe {
 public:
-    Universe(unsigned short numPlanets_, unsigned short updateTime_, unsigned short iterations_, SpaceObject *objects_);
+    Universe(unsigned int updateTime_, unsigned int iterations_, const SpaceObject *objects_, unsigned short numPlanets_);
+    Universe(unsigned int updateTime_, unsigned int iterations_, SpaceObject *objects_, unsigned short numPlanets_);
+    //void setObjects(SpaceObject *object_);
+    void update();
     void run();
+    void removeUnused();
 private:
     unsigned short numPlanets;
-    unsigned short updateTime;
-    unsigned short iterations;
+    unsigned int updateTime;
+    unsigned int iterations;
     SpaceObject *objects;
 };
+
+const SpaceObject SOLAR_SYSTEM[11] = {SUN, MERCURY, VENUS, EARTH, MARS, JUPITER, SATURN, URANUS, NEPTUNE, PLUTO, ERIS};
+const SpaceObject INNER_SOLAR_SYSTEM[5] = {SUN, MERCURY, VENUS, EARTH, MARS};
+const SpaceObject OUTER_SOLAR_SYSTEM[7] = {SUN, JUPITER, SATURN, URANUS, NEPTUNE, PLUTO, ERIS};
 
 #endif /* Universe_hpp */
